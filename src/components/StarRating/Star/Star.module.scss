@@ -1,0 +1,15 @@
+@import '../../../styles/colors.scss';
+
+.star {
+    display: block;
+    color: $border-color;
+    transition: color 0.2s ease-in-out, fill 0.2s ease-in-out;
+}
+
+.selected {
+    color: $text-color-pink;
+}
+
+.star:active {
+    color: #fd547e;
+}

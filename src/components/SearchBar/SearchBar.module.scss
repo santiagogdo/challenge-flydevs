@@ -1,0 +1,44 @@
+@import '../../styles/colors.scss';
+
+.search-container {
+  position: relative;
+  width: 100%;
+  display: flex;
+
+  @media (min-width: 480px) {
+    & {
+      display: flex;
+      justify-content: flex-end;
+    }
+  }
+}
+
+.search-wrapper {
+  width: 100%;
+
+  @media (min-width: 480px) {
+    & {
+      width: 20%;
+    }
+  }
+}
+
+.search {
+  padding-left: 1rem;
+  background-color: $background-color;
+  width: 100%;
+  height: 2.5rem;
+  border: 1px solid;
+  border-radius: 20px;
+  color: $primary-text-color;
+  font-family: 'Gilroy Light';
+  outline: 0;
+  font-size: 1em;
+  padding-right: 2.5rem;
+}
+
+.icon {
+  position: absolute;
+  top: calc(50% - 10px);
+  right: 1rem;
+}

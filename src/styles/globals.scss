@@ -4,6 +4,7 @@ html {
   padding: 0;
   margin: 0;
   font-family: 'Gilroy Light';
+  overflow-y: hidden;
 }
 
 body {
@@ -32,22 +33,22 @@ a {
   font-family: "Gilroy Light";
   font-weight: 200;
   src: local('Gilroy Light'),
-  url('/fonts/Gilroy-Light.woff2') format('woff2'),
-  url('/fonts/Gilroy-Light.woff') format('woff');
+    url('/fonts/Gilroy-Light.woff') format('woff'),
+    url('/fonts/Gilroy-Light.woff2') format('woff2');
 }
 
 @font-face {
   font-family: "Okta Neue Normal";
   font-weight: 400;
   src: local('Okta Neue Normal'),
-  url('/fonts/Okta-Neue-Normal.woff2') format('woff2'),
-  url('/fonts/Okta-Neue-Normal.woff') format('woff');
+    url('/fonts/Okta-Neue-Normal.woff') format('woff'),
+    url('/fonts/Okta-Neue-Normal.woff2') format('woff2');
 }
 
 @font-face {
   font-family: "Okta Neue Bold";
   font-weight: 800;
   src: local('Okta Neue Bold'),
-  url('/fonts/Okta-Neue-Bold.woff2') format('woff2'),
-  url('/fonts/Okta-Neue-Bold.woff') format('woff');
+    url('/fonts/Okta-Neue-Bold.woff') format('woff'),
+    url('/fonts/Okta-Neue-Bold.woff2') format('woff2');
 }

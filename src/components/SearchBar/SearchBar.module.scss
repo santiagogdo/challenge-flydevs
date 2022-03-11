@@ -3,24 +3,6 @@
 .search-container {
   position: relative;
   width: 100%;
-  display: flex;
-
-  @media (min-width: 480px) {
-    & {
-      display: flex;
-      justify-content: flex-end;
-    }
-  }
-}
-
-.search-wrapper {
-  width: 100%;
-
-  @media (min-width: 480px) {
-    & {
-      width: 20%;
-    }
-  }
 }
 
 .search {

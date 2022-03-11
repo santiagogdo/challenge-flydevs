@@ -1,12 +1,12 @@
 import { NextPage } from 'next';
 import { type ChangeEvent, type UIEvent, useEffect, useState, useRef } from 'react';
 import useFetchGenres from '../../hooks/useFetchGenres';
-import type { Movie } from '../../hooks/interfaces';
+import type { Movie } from '../../interfaces';
 import MovieCard from '../../components/MovieCard/MovieCard';
 import Spinner from '../../components/Spinner/Spinner';
 import MovieListHeader from '../../components/MovieListHeader/MovieListHeader';
-import { fetchMovies } from '../../utilities/fetchMovies';
-import { fetchMoviesBySearch } from '../../utilities/fetchMoviesBySearch';
+import fetchMovies from '../../utilities/fetchMovies';
+import fetchMoviesBySearch from '../../utilities/fetchMoviesBySearch';
 import { config } from '../../config';
 import styles from './MovieList.module.scss';
 

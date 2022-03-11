@@ -1,5 +1,5 @@
 import { useState, useEffect, } from 'react';
-import type { Genre } from './interfaces';
+import type { Genre } from '../interfaces';
 import { config } from '../config';
 
 

@@ -1,0 +1,145 @@
+@import '../../../styles/colors.scss';
+
+.container {
+  width: 100%;
+  height: 100%;
+  overflow-y: auto;
+}
+
+.spinner-wrapper {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.poster-container {
+  position: relative;
+  top: 0;
+  width: 100%;
+}
+
+.poster-image-container {
+  position: relative;
+  top: 0;
+  width: 100%;
+  height: 256px;
+}
+
+.poster {
+  filter: grayscale(100%);
+}
+
+@media (min-width: 1920px) {
+  .container {
+    flex-wrap: nowrap;
+  }
+
+  .poster-image-container {
+    height: 500px;
+  }
+}
+
+.favorite-button-container {
+  position: absolute;
+  top: 25px;
+  right: 16px;
+  z-index: 2;
+}
+
+.go-back-button {
+  position: absolute;
+  top: 20px;
+  left: 16px;
+  display: flex;
+  align-items: center;
+  width: 70px;
+  height: 40px;
+  z-index: 2;
+  color: $text-color-white;
+  user-select: none;
+}
+
+.go-back-button:active {
+  color: $primary-text-color;
+}
+
+.go-back-text {
+  font-size: 1.1em;
+  margin-left: 0.3rem;
+}
+
+.play-button-wrapper {
+  position: absolute;
+  z-index: 2;
+  transition: opacity ease 0.2s;
+  top: 36%;
+  left: 43%;
+}
+
+.overlay {
+  height: 100%;
+  width: 100%;
+  top: 0;
+  position: absolute;
+  z-index: 1;
+  cursor: pointer;
+  background: linear-gradient(rgba(64, 62, 90, 0), rgba(25, 25, 38, 1));
+  background-color: rgba(24, 24, 37, 0.7);
+}
+
+.content-container {
+  padding-left: 1rem;
+  padding-right: 1rem;
+  padding-bottom: 1rem;
+}
+
+.movie-title {
+  display: block;
+  font-family: 'Okta Neue Bold';
+  font-size: 2.5em;
+  line-height: 1.25;
+  color: $text-color-white;
+}
+
+.rating-duration-container {
+  display: flex;
+  align-items: center;
+}
+
+.movie-genres {
+  display: block;
+  padding-top: 1rem;
+  margin-bottom: 0.5rem;
+  font-family: 'Gilroy Light';
+  font-size: 1em;
+  color: $text-color-pink;
+}
+
+.movie-duration {
+  display: block;
+  padding-left: 0.5rem;
+  font-family: 'Okta Neue Bold';
+  font-size: 1em;
+  color: $text-color-grey;
+}
+
+.movie-storyline-container {
+  margin: 1rem 0;
+}
+
+.movie-storyline-title {
+  display: block;
+  color: $text-color-white;
+  font-family: 'Okta Neue Bold';
+  font-size: 1.2em;
+}
+
+.movie-storyline-description {
+  margin-top: 0.5rem;
+  display: block;
+  color: $primary-text-color;
+  line-height: 1.5;
+  font-size: 1.1em;
+}

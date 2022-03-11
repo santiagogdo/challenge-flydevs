@@ -1,8 +1,9 @@
 import { config } from "../config";
+import type { MovieDetail } from "../interfaces";
 
-export default async function fetchMovies(page: number) {
+export default async function fetchMovies(movieId: number): Promise<MovieDetail> {
   const response = await fetch(new Request(
-    `https://api.themoviedb.org/3/discover/movie?sort_by=popularity.desc&page=${page}`,
+    `https://api.themoviedb.org/3/movie/${movieId}`,
     {
       headers: {
         'Authorization': config.authToken || ''
@@ -10,5 +11,5 @@ export default async function fetchMovies(page: number) {
       method: 'GET',
     }));
   const parsedData = await response.json();
-  return { movies: parsedData.results, totalPages: parsedData.total_pages };
+  return parsedData;
 };

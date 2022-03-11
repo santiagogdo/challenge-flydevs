@@ -32,6 +32,30 @@ export interface Movie {
   vote_average: number;
 };
 
+export interface MovieDetail {
+  id: number;
+  adult: boolean;
+  backdrop_path: string | null;
+  budget: number;
+  genres: Array<Genre>;
+  homepage: string | null;
+  imdb_id: string | null;
+  original_language: string;
+  original_title: string;
+  overview: string | null;
+  popularity: number;
+  poster_path: string | null;
+  release_date: string;
+  revenue: number;
+  runtime: number | null;
+  status: string;
+  tagline: string | null;
+  title: string;
+  vote_average: number;
+  vote_count: number;
+}
+
+
 export interface Genre {
   id: number;
   name: string;

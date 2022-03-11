@@ -31,17 +31,23 @@ a {
 @font-face {
   font-family: "Gilroy Light";
   font-weight: 200;
-  src: url("/fonts/Gilroy-Light.ttf") format('truetype');
+  src: local('Gilroy Light'),
+  url('/fonts/Gilroy-Light.woff2') format('woff2'),
+  url('/fonts/Gilroy-Light.woff') format('woff');
 }
 
 @font-face {
   font-family: "Okta Neue Normal";
   font-weight: 400;
-  src: url("/fonts/Okta-Neue-Normal.ttf") format('truetype');
+  src: local('Okta Neue Normal'),
+  url('/fonts/Okta-Neue-Normal.woff2') format('woff2'),
+  url('/fonts/Okta-Neue-Normal.woff') format('woff');
 }
 
 @font-face {
   font-family: "Okta Neue Bold";
   font-weight: 800;
-  src: url("/fonts/Okta-Neue-Bold.ttf") format('truetype');
+  src: local('Okta Neue Bold'),
+  url('/fonts/Okta-Neue-Bold.woff2') format('woff2'),
+  url('/fonts/Okta-Neue-Bold.woff') format('woff');
 }

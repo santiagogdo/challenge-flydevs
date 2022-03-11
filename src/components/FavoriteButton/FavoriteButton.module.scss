@@ -1,0 +1,16 @@
+@import '../../styles/colors.scss';
+
+.heart {
+    width: 25px;
+    height: 25px;
+    color: $text-color-white;
+    transition: color 0.2s ease-in-out, fill 0.2s ease-in-out;
+}
+
+.selected {
+    color: $text-color-pink;
+}
+
+.heart:active {
+    color: #fd547e;
+}

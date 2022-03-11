@@ -5,7 +5,7 @@ interface CustomContextProviderProps {
 };
 
 interface ContextAction {
-  type: 'ADD_FAVORITE' | 'REMOVE_FAVORITE';
+  type: 'ADD_FAVOURITE' | 'REMOVE_FAVOURITE';
   payload: any;
 };
 
@@ -23,10 +23,10 @@ export const AppContext = createContext<AppContext>({
 
 function contextReducer(state: Array<number>, action: ContextAction) {
   switch (action.type) {
-    case 'ADD_FAVORITE': {
+    case 'ADD_FAVOURITE': {
       return [...state, action.payload];
     }
-    case 'REMOVE_FAVORITE': {
+    case 'REMOVE_FAVOURITE': {
       const index = state.findIndex((id) => id === action.payload);
       if (index != -1) {
         const stateCopy = [...state];

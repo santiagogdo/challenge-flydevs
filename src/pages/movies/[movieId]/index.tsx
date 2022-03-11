@@ -2,7 +2,7 @@ import { NextPage } from 'next';
 import Image from 'next/image';
 import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
-import FavoriteButton from '../../../components/FavoriteButton/FavoriteButton';
+import FavouriteButton from '../../../components/FavouriteButton/FavouriteButton';
 import MovieCast from '../../../components/MovieCast/MovieCast';
 import PlayButton from '../../../components/PlayButton/PlayButton';
 import Spinner from '../../../components/Spinner/Spinner';
@@ -39,10 +39,10 @@ const MovieDetails: NextPage = () => {
   const handleOnClick = () => {
     const selected = isSelected();
     if (!selected) {
-      dispatch({ type: 'ADD_FAVORITE', payload: parseInt(router.query.movieId as string) });
+      dispatch({ type: 'ADD_FAVOURITE', payload: parseInt(router.query.movieId as string) });
     }
     else {
-      dispatch({ type: 'REMOVE_FAVORITE', payload: parseInt(router.query.movieId as string) });
+      dispatch({ type: 'REMOVE_FAVOURITE', payload: parseInt(router.query.movieId as string) });
     }
   };
 
@@ -65,8 +65,8 @@ const MovieDetails: NextPage = () => {
                 </svg>
                 <span className={styles['go-back-text']}>Back</span>
               </div>
-              <div className={styles['favorite-button-container']}>
-                <FavoriteButton isSelected={isSelected()} onClick={handleOnClick} />
+              <div className={styles['favourite-button-container']}>
+                <FavouriteButton isSelected={isSelected()} onClick={handleOnClick} />
               </div>
               <div className={styles['overlay']}>
                 <div className={styles['play-button-wrapper']}>

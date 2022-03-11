@@ -1,14 +1,14 @@
 import type { MouseEventHandler } from 'react';
-import styles from './FavoriteButton.module.scss';
+import styles from './FavouriteButton.module.scss';
 
-interface FavoriteButtonProps {
+interface FavouriteButtonProps {
   isSelected?: boolean;
   onClick: MouseEventHandler;
   height?: number;
   width?: number;
 };
 
-const FavoriteButton = (props: FavoriteButtonProps) => {
+const FavouriteButton = (props: FavouriteButtonProps) => {
   return (
     <svg onClick={props.onClick} className={`${styles.heart} ${props.isSelected ? styles.selected : ''}`}
       style={{
@@ -26,4 +26,4 @@ const FavoriteButton = (props: FavoriteButtonProps) => {
 };
 
 
-export default FavoriteButton;
+export default FavouriteButton;

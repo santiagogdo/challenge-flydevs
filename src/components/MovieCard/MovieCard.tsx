@@ -2,7 +2,7 @@ import Image from 'next/image';
 import { useRouter } from 'next/router';
 import { config } from '../../config';
 import useCustomContext from '../../hooks/useCustomContext';
-import FavoriteButton from '../FavoriteButton/FavoriteButton';
+import FavouriteButton from '../FavouriteButton/FavouriteButton';
 import PlayButton from '../PlayButton/PlayButton';
 import StarRating from '../StarRating/StarRating';
 import styles from './MovieCard.module.scss';
@@ -25,18 +25,18 @@ const MovieCard = (props: MovieData) => {
   const handleOnClick = () => {
     const selected = isSelected();
     if (!selected) {
-      dispatch({ type: 'ADD_FAVORITE', payload: props.movieId });
+      dispatch({ type: 'ADD_FAVOURITE', payload: props.movieId });
     }
     else {
-      dispatch({ type: 'REMOVE_FAVORITE', payload: props.movieId });
+      dispatch({ type: 'REMOVE_FAVOURITE', payload: props.movieId });
     }
   };
 
   return (
     <div className={styles.card}>
       <div className={styles.poster}>
-        <div className={styles['favorite-button-container']}>
-          <FavoriteButton isSelected={isSelected()} onClick={handleOnClick} />
+        <div className={styles['favourite-button-container']}>
+          <FavouriteButton isSelected={isSelected()} onClick={handleOnClick} />
         </div>
         <div className={styles['overlay']} onClick={() => router.push(`/movies/${props.movieId}`)} >
           <div className={styles['play-button-wrapper']}>

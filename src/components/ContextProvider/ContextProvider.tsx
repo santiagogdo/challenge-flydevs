@@ -27,7 +27,6 @@ function contextReducer(state: Array<number>, action: ContextAction) {
       return [...state, action.payload];
     }
     case 'REMOVE_FAVORITE': {
-      console.log('Context: REMOVE_FAVORITE');
       const index = state.findIndex((id) => id === action.payload);
       if (index != -1) {
         const stateCopy = [...state];

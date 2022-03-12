@@ -1,3 +1,4 @@
+@use '../../styles/utilities.scss';
 @import '../../styles/colors.scss';
 
 .card {
@@ -50,9 +51,7 @@
 .play-button-wrapper {
   position: absolute;
   z-index: 1;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  @include utilities.center-absolute;
 }
 
 .star-rating-container {

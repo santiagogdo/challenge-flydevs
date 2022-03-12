@@ -1,3 +1,4 @@
+@use '../../styles//utilities.scss';
 @import '../../styles/colors.scss';
 
 .container {
@@ -24,8 +25,6 @@
 }
 
 .loading-more-spinner {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  @include utilities.center-flex;
   height: 4rem;
 }

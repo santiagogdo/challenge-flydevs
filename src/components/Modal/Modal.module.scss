@@ -1,6 +1,10 @@
 @import '../../styles/colors.scss';
 
 $transition-settings: all 0.3s cubic-bezier(0.250, 0.460, 0.450, 0.940);
+$transition-in-center-transform: translate(-50%, -50%) scale(1);
+$transition-out-center-transform: translate(-50%, -50%) scale(0);
+$transition-in-transform: scale(1);
+$transition-out-transform: scale(0);
 
 .modal-overlay {
   position: absolute;
@@ -48,7 +52,7 @@ $transition-settings: all 0.3s cubic-bezier(0.250, 0.460, 0.450, 0.940);
 .modal-header-title {
   color: $primary-text-color;
   font-family: "Okta Neue Normal";
-  font-size: 30px;
+  font-size: 1.6em;
   flex-grow: 1;
   text-align: center;
 }
@@ -93,54 +97,96 @@ $transition-settings: all 0.3s cubic-bezier(0.250, 0.460, 0.450, 0.940);
 .modal-transition {
   &-appear {
     opacity: 0;
-    -webkit-transform: scale(0);
-    transform: translate(-50%, -50%) scale(0);
+    -webkit-transform: $transition-out-center-transform;
+    transform: $transition-out-center-transform;
+
+    @media (max-width: 480px) {
+      -webkit-transform: $transition-out-transform;
+      transform: $transition-out-transform;
+    }
   }
 
   &-appear-active {
     opacity: 1;
-    -webkit-transform: scale(1);
-    transform: translate(-50%, -50%) scale(1);
+    -webkit-transform: $transition-in-center-transform;
+    transform: $transition-in-center-transform;
     transition: $transition-settings;
+
+    @media (max-width: 480px) {
+      -webkit-transform: $transition-in-transform;
+      transform: $transition-in-transform;
+    }
   }
 
   &-appear-done {
     opacity: 1;
-    transform: translate(-50%, -50%) scale(1);
+    -webkit-transform: $transition-in-center-transform;
+    transform: $transition-in-center-transform;
+
+    @media (max-width: 480px) {
+      -webkit-transform: $transition-in-transform;
+      transform: $transition-in-transform;
+    }
   }
 
   &-enter {
     opacity: 0;
-    -webkit-transform: scale(0);
-    transform: translate(-50%, -50%) scale(0);
+    -webkit-transform: $transition-out-center-transform;
+    transform: $transition-out-center-transform;
+
+    @media (max-width: 480px) {
+      -webkit-transform: $transition-out-transform;
+      transform: $transition-out-transform;
+    }
   }
 
   &-enter-active {
     opacity: 1;
-    -webkit-transform: scale(1);
-    transform: translate(-50%, -50%) scale(1);
+    -webkit-transform: $transition-in-center-transform;
+    transform: $transition-in-center-transform;
     transition: $transition-settings;
+
+    @media (max-width: 480px) {
+      -webkit-transform: $transition-in-transform;
+      transform: $transition-in-transform;
+    }
   }
 
   &-enter-done {
     opacity: 1;
-    transform: translate(-50%, -50%);
+    -webkit-transform: $transition-in-center-transform;
+    transform: $transition-in-center-transform;
+
+    @media (max-width: 480px) {
+      -webkit-transform: $transition-in-transform;
+      transform: $transition-in-transform;
+    }
   }
 
   &-exit {
     opacity: 1;
-    -webkit-transform: scale(1);
+    -webkit-transform: translate(-50%, -50%) scale(1);
     transform: translate(-50%, -50%) scale(1);
+
+    @media (max-width: 480px) {
+      -webkit-transform: scale(1);
+      transform: scale(1);
+    }
   }
 
   &-exit-active {
     opacity: 0;
-    -webkit-transform: scale(0);
+    -webkit-transform: translate(-50%, -50%) scale(0);
     transform: translate(-50%, -50%) scale(0);
     transition: $transition-settings;
+
+    @media (max-width: 480px) {
+      -webkit-transform: scale(0);
+      transform: scale(0);
+    }
   }
 
-  .modal-transition-exit-done {
+  &-exit-done {
     opacity: 0;
   }
 }

@@ -1,34 +1,35 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Movie showcase app
+
+This project was created for a frontend challenge from Flydevs.
 
 ## Getting Started
 
-First, run the development server:
+To run the project locally, you will need to:
 
-```bash
-npm run dev
-# or
-yarn dev
-```
+1) Clone the project.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+2) Open the root folder of the project in a terminal and run ```npm install```.
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+3) Create an .env.local file in the root folder of the project with the following keys:
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+    ```NEXT_PUBLIC_AUTH_TOKEN```: For storing the API token that the application uses to load the data from **The Movie Database API**. To obtain an API key, you will need to create an account, and request an API key by clicking the "API" link from the left hand sidebar within your account settings page. You need to have a legitimate business name, address, phone number and description to apply for an API key.
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+    ```NEXT_PUBLIC_MOVIE_IMAGE_BASE_URL```: This is the base url that will be used to fetch images from **The Movie Database API**. You can obtain it by sending a ```GET``` request to ```https://api.themoviedb.org/3/configuration?api_key=your-api-key```.
 
-## Learn More
+    ```NEXT_PUBLIC_PLACEHOLDER_IMAGE```: This is a placeholder image to be used during the load of the images. Since the next/image component will blur and resize the image, the recommended size is 10px or less for a better performance, for example, a base64 2x2 image.
 
-To learn more about Next.js, take a look at the following resources:
+4) Run the development server:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+    ```bash
+    npm run dev
+    # or
+    yarn dev
+    ```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+5) Open [http://localhost:3000](http://localhost:3000) with your browser.
 
 ## Deploy on Vercel
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+You can deploy the app using the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+Check out [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.

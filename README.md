@@ -10,9 +10,9 @@ To run the project locally, you will need to:
 
 2) Open the root folder of the project in a terminal and run ```npm install```.
 
-3) Create an .env.local file in the root folder of the project with the following keys:
+3) Create an ```.env.local``` file in the root folder of the project with the following keys:
 
-    ```NEXT_PUBLIC_AUTH_TOKEN```: For storing the API token that the application uses to load the data from **The Movie Database API**. To obtain an API key, you will need to create an account, and request an API key by clicking the "API" link from the left hand sidebar within your account settings page. You need to have a legitimate business name, address, phone number and description to apply for an API key.
+    ```NEXT_PUBLIC_AUTH_TOKEN```: For storing the API token that the application uses to load the data from **The Movie Database API**. To obtain an API key, you will need to [create an account](https://www.themoviedb.org/signup), and request an API key by clicking the "API" link from the left hand sidebar within your account settings page. You need to have a legitimate business name, address, phone number and description to apply for an API key.
 
     ```NEXT_PUBLIC_MOVIE_IMAGE_BASE_URL```: This is the base url that will be used to fetch images from **The Movie Database API**. You can obtain it by sending a ```GET``` request to ```https://api.themoviedb.org/3/configuration?api_key=your-api-key```.
 

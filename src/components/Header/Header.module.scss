@@ -6,12 +6,29 @@
   display: flex;
   width: 100%;
   align-items: center;
+  color: $primary-text-color;
+  font-family: "Okta Neue Normal";
 
   @media (min-width: 480px) {
     & {
       background-color: $background-color;
       justify-content: flex-end;
     }
+  }
+}
+
+.header-text {
+  font-size: 1.12em;
+  transition: color 0.2s ease;
+  margin-right: 1rem;
+  cursor: pointer;
+
+  &:hover {
+    color: $text-color-white;
+  }
+
+  &:active {
+    color: $text-color-grey;
   }
 }
 

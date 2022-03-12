@@ -34,15 +34,17 @@ const MovieDetails: NextPage = () => {
     }
   }, [router.query]);
 
-  const isSelected = () => state.includes(parseInt(router.query.movieId as string));
+  const isSelected = () => state.some((movie) => movie.id === parseInt(router.query.movieId as string));
 
   const handleOnClick = () => {
     const selected = isSelected();
-    if (!selected) {
-      dispatch({ type: 'ADD_FAVOURITE', payload: parseInt(router.query.movieId as string) });
-    }
-    else {
-      dispatch({ type: 'REMOVE_FAVOURITE', payload: parseInt(router.query.movieId as string) });
+    if (movieDetails) {
+      if (!selected) {
+        dispatch({ type: 'ADD_FAVOURITE', payload: { ...movieDetails, genre_ids: movieDetails.genres.map((genre) => genre.id) } });
+      }
+      else {
+        dispatch({ type: 'REMOVE_FAVOURITE', payload: movieDetails.id });
+      }
     }
   };
 

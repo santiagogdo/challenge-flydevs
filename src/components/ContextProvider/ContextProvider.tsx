@@ -1,4 +1,5 @@
 import { createContext, type ReactNode, useReducer, type Dispatch } from "react";
+import type { Movie } from "../../interfaces";
 
 interface CustomContextProviderProps {
   children: ReactNode;
@@ -10,7 +11,7 @@ interface ContextAction {
 };
 
 interface AppContext {
-  state: Array<number>;
+  state: Array<Movie>;
   dispatch: Dispatch<ContextAction>;
   isLoading: boolean;
 };
@@ -21,13 +22,13 @@ export const AppContext = createContext<AppContext>({
   isLoading: false
 });
 
-function contextReducer(state: Array<number>, action: ContextAction) {
+function contextReducer(state: Array<Movie>, action: ContextAction) {
   switch (action.type) {
     case 'ADD_FAVOURITE': {
       return [...state, action.payload];
     }
     case 'REMOVE_FAVOURITE': {
-      const index = state.findIndex((id) => id === action.payload);
+      const index = state.findIndex((movie) => movie.id === action.payload);
       if (index != -1) {
         const stateCopy = [...state];
         stateCopy.splice(index, 1);

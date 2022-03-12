@@ -6,14 +6,14 @@ import type { Movie } from '../../interfaces';
 import FavouriteButton from '../FavouriteButton/FavouriteButton';
 import PlayButton from '../PlayButton/PlayButton';
 import StarRating from '../StarRating/StarRating';
-import styles from './MovieCard.module.scss';
+import styles from './FavouriteMovieCard.module.scss';
 
-interface MovieData {
+interface FavouriteMovieCardProps {
   movie: Movie;
   genres: Array<string>;
-}
+};
 
-const MovieCard = (props: MovieData) => {
+const FavouriteMovieCard = (props: FavouriteMovieCardProps) => {
   const { state, dispatch } = useCustomContext();
   const router = useRouter();
 
@@ -21,10 +21,7 @@ const MovieCard = (props: MovieData) => {
 
   const handleOnClick = () => {
     const selected = isSelected();
-    if (!selected) {
-      dispatch({ type: 'ADD_FAVOURITE', payload: props.movie });
-    }
-    else {
+    if (selected) {
       dispatch({ type: 'REMOVE_FAVOURITE', payload: props.movie.id });
     }
   };
@@ -35,9 +32,11 @@ const MovieCard = (props: MovieData) => {
         <div className={styles['favourite-button-container']}>
           <FavouriteButton isSelected={isSelected()} onClick={handleOnClick} />
         </div>
-        <div className={styles['overlay']} onClick={() => router.push(`/movies/${props.movie.id}`)} >
-          <div className={styles['play-button-wrapper']}>
-            <PlayButton size={70} />
+        <div className={styles['overlay-wrapper']}>
+          <div className={styles['overlay']} onClick={() => router.push(`/movies/${props.movie.id}`)} >
+            <div className={styles['play-button-wrapper']}>
+              <PlayButton size={70} />
+            </div>
           </div>
         </div>
         <Image
@@ -49,24 +48,27 @@ const MovieCard = (props: MovieData) => {
           layout="responsive"
           placeholder='blur'
           blurDataURL={config.placeholderImage} />
+        <div className={styles['star-rating-container']}>
+          <span className={styles['movie-genres']}>{props.genres.join(', ')}</span>
+          <StarRating
+            editable={false}
+            value={Math.round(props.movie.vote_average / 2)}
+            size={16}
+            activeColor="#ff3365"
+            inactiveColor="#85859e78"
+            gap={5}
+          />
+        </div>
       </div>
-      <div className={styles['star-rating-container']}>
-        <span className={styles['movie-genres']}>{props.genres.join(', ')}</span>
-        <StarRating
-          editable={false}
-          value={Math.round(props.movie.vote_average / 2)}
-          size={16}
-          activeColor="#ff3365"
-          inactiveColor="#85859e78"
-          gap={5}
-        />
+      <div className={styles['movie-content-container']}>
+        <span className={styles['movie-title']}>{props.movie.title}</span>
+        {props.movie.release_date &&
+          <span className={styles['movie-duration']}>{new Date(props.movie.release_date).toLocaleDateString('en-US', { year: 'numeric' })}</span>
+        }
+        <span className={styles['movie-description']}>{props.movie.overview}</span>
       </div>
-      <span className={styles['movie-title']}>{props.movie.title}</span>
-      {props.movie.release_date &&
-        <span className={styles['movie-duration']}>{new Date(props.movie.release_date).toLocaleDateString('en-US', { year: 'numeric' })}</span>
-      }
     </div>
   );
 };
 
-export default MovieCard;
+export default FavouriteMovieCard;

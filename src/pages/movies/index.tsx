@@ -4,11 +4,12 @@ import useFetchGenres from '../../hooks/useFetchGenres';
 import type { Movie } from '../../interfaces';
 import MovieCard from '../../components/MovieCard/MovieCard';
 import Spinner from '../../components/Spinner/Spinner';
-import MovieListHeader from '../../components/MovieListHeader/MovieListHeader';
+import Header from '../../components/Header/Header';
 import fetchMovies from '../../utilities/fetchMovies';
 import fetchMoviesBySearch from '../../utilities/fetchMoviesBySearch';
 import { config } from '../../config';
 import styles from './MovieList.module.scss';
+import FavouriteMoviesModal from '../../components/FavouriteMoviesModal/FavouriteMoviesModal';
 
 const MovieList: NextPage = () => {
   const { genres } = useFetchGenres();
@@ -19,6 +20,7 @@ const MovieList: NextPage = () => {
   const [searchPageNum, setSearchPageNum] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
   const [isLoading, setIsLoading] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false);
   const timer = useRef<NodeJS.Timeout>();
 
   useEffect(() => {
@@ -73,26 +75,28 @@ const MovieList: NextPage = () => {
     }
   };
 
+  const toggleFavouriteMoviesModal = () => {
+    setIsModalOpen((previous) => !previous);
+  };
+
   const getMovieGenres = (movie: Movie) => {
     return genres.filter((genre) => movie.genre_ids.includes(genre.id)).map((genre) => genre.name);
   };
 
   return (
     <div className={styles.container}>
-      <MovieListHeader onChange={handleOnChange} />
+      <FavouriteMoviesModal isOpen={isModalOpen} onClose={toggleFavouriteMoviesModal} genres={genres} />
+      <Header onChange={handleOnChange} handleFavouriteMovies={toggleFavouriteMoviesModal} />
       {false ?
         <Spinner />
-        : <><div onScroll={handleOnScroll} className={`${styles['movie-list']} ${ isLoading ? styles['movie-list-loading-more'] : ''}`}>
+        : <><div onScroll={handleOnScroll} className={`${styles['movie-list']} ${isLoading ? styles['movie-list-loading-more'] : ''}`}>
           {(search && movieSearchResult || movies).map((movie, index) => {
             return (
               <MovieCard
                 key={movie.id + index}
-                movieId={movie.id}
-                title={movie.title}
-                releaseDate={movie.release_date}
+                movie={movie}
                 genres={getMovieGenres(movie)}
-                image={movie.poster_path ? `${config.movieImageBaseUrl}w500${movie.poster_path}` : config.placeholderImage || ''}
-                score={movie.vote_average} />
+              />
             )
           })}
         </div>

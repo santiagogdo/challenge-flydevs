@@ -74,8 +74,9 @@
   position: absolute;
   z-index: 2;
   transition: opacity ease 0.2s;
-  top: 36%;
-  left: 43%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
 .overlay {

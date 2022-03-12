@@ -1,0 +1,152 @@
+@import '../../styles/colors.scss';
+
+$transition-settings: all 0.3s cubic-bezier(0.250, 0.460, 0.450, 0.940);
+
+.modal-overlay {
+  position: absolute;
+  z-index: 3;
+  width: 100%;
+  height: 100%;
+  background-color: $background-color;
+  opacity: 0.7;
+}
+
+.modal-container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  z-index: 3;
+  max-height: 80%;
+  border-radius: 10px;
+  background-color: $secondary-background-color;
+  box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
+  opacity: 0;
+
+  @media (max-width: 480px) {
+    & {
+      top: 0;
+      left: 0;
+      max-height: 100%;
+      height: 100%;
+      width: 100%;
+    }
+  }
+}
+
+.modal-header {
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal-body {
+  width: 100%;
+  height: calc(100% - 80px);
+}
+
+.modal-header-title {
+  color: $primary-text-color;
+  font-family: "Okta Neue Normal";
+  font-size: 30px;
+  flex-grow: 1;
+  text-align: center;
+}
+
+.overlay-transition {
+  &-appear {
+    opacity: 0;
+  }
+
+  &-appear-active {
+    opacity: 0.7;
+    transition: $transition-settings;
+  }
+
+  &-appear-done {
+    opacity: 0.7;
+  }
+
+  &-enter {
+    opacity: 0;
+  }
+
+  &-enter-active {
+    opacity: 0.7;
+    transition: $transition-settings;
+  }
+
+  &-enter-done {
+    opacity: 0.7;
+  }
+
+  &-exit {
+    opacity: 0.7;
+  }
+
+  &-exit-active {
+    opacity: 0;
+    transition: $transition-settings;
+  }
+}
+
+.modal-transition {
+  &-appear {
+    opacity: 0;
+    -webkit-transform: scale(0);
+    transform: translate(-50%, -50%) scale(0);
+  }
+
+  &-appear-active {
+    opacity: 1;
+    -webkit-transform: scale(1);
+    transform: translate(-50%, -50%) scale(1);
+    transition: $transition-settings;
+  }
+
+  &-appear-done {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+  }
+
+  &-enter {
+    opacity: 0;
+    -webkit-transform: scale(0);
+    transform: translate(-50%, -50%) scale(0);
+  }
+
+  &-enter-active {
+    opacity: 1;
+    -webkit-transform: scale(1);
+    transform: translate(-50%, -50%) scale(1);
+    transition: $transition-settings;
+  }
+
+  &-enter-done {
+    opacity: 1;
+    transform: translate(-50%, -50%);
+  }
+
+  &-exit {
+    opacity: 1;
+    -webkit-transform: scale(1);
+    transform: translate(-50%, -50%) scale(1);
+  }
+
+  &-exit-active {
+    opacity: 0;
+    -webkit-transform: scale(0);
+    transform: translate(-50%, -50%) scale(0);
+    transition: $transition-settings;
+  }
+
+  .modal-transition-exit-done {
+    opacity: 0;
+  }
+}
+
+.close-button {
+  cursor: pointer;
+  flex-grow: 0;
+  padding-right: 1rem;
+}

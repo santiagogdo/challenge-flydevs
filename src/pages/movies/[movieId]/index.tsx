@@ -3,15 +3,18 @@ import Image from 'next/image';
 import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
 import FavouriteButton from '../../../components/FavouriteButton/FavouriteButton';
+import FilmographyOverview from '../../../components/FilmographyOverview/FilmographyOverview';
+import GoBackButton from '../../../components/GoBackButton/GoBackButton';
 import MovieCast from '../../../components/MovieCast/MovieCast';
 import PlayButton from '../../../components/PlayButton/PlayButton';
 import Spinner from '../../../components/Spinner/Spinner';
 import StarRating from '../../../components/StarRating/StarRating';
 import { config } from '../../../config';
 import useCustomContext from '../../../hooks/useCustomContext';
-import type { Cast, MovieDetail } from '../../../interfaces';
+import type { Cast, Movie, MovieDetail } from '../../../interfaces';
 import fetchCast from '../../../utilities/fetchCast';
 import fetchMovieDetails from '../../../utilities/fetchMovieDetails';
+import fetchSimilarMovies from '../../../utilities/fetchSimilarMovies';
 import styles from './/MovieDetails.module.scss';
 
 const MovieDetails: NextPage = () => {
@@ -19,18 +22,21 @@ const MovieDetails: NextPage = () => {
   const router = useRouter();
   const [movieDetails, setMovieDetails] = useState<MovieDetail>();
   const [movieCast, setMovieCast] = useState<Array<Cast>>([]);
+  const [similarMovies, setSimilarMovies] = useState<Array<Movie>>([]);
   const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
     if (router.query.movieId) {
+      const movieId = parseInt(router.query.movieId as string);
       setIsLoading(true);
-      fetchMovieDetails(parseInt(router.query.movieId as string)).then((data) => {
-        setMovieDetails(data);
-      });
-      fetchCast(parseInt(router.query.movieId as string)).then((data) => {
-        setMovieCast(data);
-        setIsLoading(false);
-      });
+      Promise.all([
+        fetchMovieDetails(movieId),
+        fetchCast(movieId),
+        fetchSimilarMovies(movieId, 1)]).then((results) => {
+          setMovieDetails(results[0]);
+          setMovieCast(results[1]);
+          setSimilarMovies(results[2].movies);
+        }).finally(() => setIsLoading(false));
     }
   }, [router.query]);
 
@@ -57,15 +63,8 @@ const MovieDetails: NextPage = () => {
         : <>
           {movieDetails && <>
             <div className={styles['poster-container']}>
-              <div className={styles['go-back-button']} onClick={() => router.push('/movies')}>
-                <svg viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg" width={20} height={20}>
-                  <path
-                    fill="currentColor"
-                    d="M353 450a15 15 0 0 1-10.61-4.39L157.5 260.71a15 15 0 0 1 0-21.21L342.39 54.6a15 15 0 1 1 21.22 21.21L189.32 250.1l174.29 174.29A15 15 0 0 1 353 450Z"
-                    data-name={1}
-                  />
-                </svg>
-                <span className={styles['go-back-text']}>Back</span>
+              <div className={styles['go-back-button-wrapper']}>
+                <GoBackButton />
               </div>
               <div className={styles['favourite-button-container']}>
                 <FavouriteButton isSelected={isSelected()} onClick={handleOnClick} />
@@ -105,6 +104,10 @@ const MovieDetails: NextPage = () => {
                 <span className={styles['movie-storyline-description']}>{movieDetails.overview}</span>
               </div>
               <MovieCast cast={movieCast} />
+              <div className={styles['movie-similar-movies-container']}>
+                <span className={styles['movie-similar-movies-title']}>Similar movies</span>
+                <FilmographyOverview movies={similarMovies} />
+              </div>
             </div>
           </>}
         </>

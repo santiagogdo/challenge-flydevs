@@ -1,0 +1,19 @@
+@use '../../styles/utilities.scss';
+@import '../../styles/colors.scss';
+
+.arrow-button-container {
+  display: flex;
+  height: 100%;
+  align-items: center;
+  justify-content: flex-start;
+  width: 40px;
+  cursor: pointer	;
+
+  &.flip-arrow {
+    justify-content: flex-end;
+  }
+}
+
+.carousel :global(.styles-module_item-tracker__3bypy > div) {
+  margin: 0 0.5rem;
+}

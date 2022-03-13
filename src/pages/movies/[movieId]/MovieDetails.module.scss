@@ -47,26 +47,12 @@
   z-index: 2;
 }
 
-.go-back-button {
+.go-back-button-wrapper {
   position: absolute;
   top: 20px;
   left: 16px;
-  display: flex;
-  align-items: center;
   width: 70px;
   height: 40px;
-  z-index: 2;
-  color: $text-color-white;
-  user-select: none;
-}
-
-.go-back-button:active {
-  color: $primary-text-color;
-}
-
-.go-back-text {
-  font-size: 1.1em;
-  margin-left: 0.3rem;
 }
 
 .play-button-wrapper {
@@ -124,7 +110,7 @@
 }
 
 .movie-storyline-container {
-  margin: 1rem 0;
+  margin: 2rem 0;
 }
 
 .movie-storyline-title {
@@ -140,4 +126,16 @@
   color: $primary-text-color;
   line-height: 1.5;
   font-size: 1.1em;
+}
+
+.movie-similar-movies-container {
+  margin-top: 2rem;
+}
+
+.movie-similar-movies-title {
+  display: block;
+  color: $text-color-white;
+  font-family: 'Okta Neue Bold';
+  font-size: 1.2em;
+  margin-bottom: 1rem;
 }

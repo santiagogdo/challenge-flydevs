@@ -6,12 +6,15 @@ import Spinner from '../../../../components/Spinner/Spinner';
 import CastPersonOverview from '../../../../components/CastPersonOverview/CastPersonOverview';
 import { useEffect, useState } from 'react';
 import fetchPersonDetail from '../../../../utilities/fetchPersonDetail';
-import type { Cast } from '../../../../interfaces';
+import type { Cast, Movie } from '../../../../interfaces';
 import { config } from '../../../../config';
+import FilmographyOverview from '../../../../components/FilmographyOverview/FilmographyOverview';
+import fetchActorFilmography from '../../../../utilities/fetchActorFilmography';
 
 const CastDetails: NextPage = () => {
   const router = useRouter();
   const [personDetail, setPersonDetail] = useState<Cast>();
+  const [filmography, setFilmography] = useState<Array<Movie>>([]);
   const [isLoading, setIsLoading] = useState(false);
 
   const getMovieId = () => parseInt(router.query.movieId as string);
@@ -20,8 +23,11 @@ const CastDetails: NextPage = () => {
     if (router.query.castId && typeof router.query.castId === 'string') {
       setIsLoading(true);
       fetchPersonDetail(parseInt(router.query.castId)).then((data) => {
+        fetchActorFilmography(data.imdb_id).then((result) => {
+          setFilmography(result);
+          setIsLoading(false);
+        });
         setPersonDetail(data);
-        setIsLoading(false);
       });
     }
   }, [router.query.castId]);
@@ -29,7 +35,9 @@ const CastDetails: NextPage = () => {
   return (
     <div className={styles.container}>
       {isLoading ?
-        <Spinner />
+        <div className={styles['spinner-wrapper']}>
+          <Spinner />
+        </div>
         : <>
           {personDetail && <>
             <div className={styles['poster-container']}>
@@ -68,7 +76,11 @@ const CastDetails: NextPage = () => {
             <div className={styles['content-container']}>
               <div className={styles['cast-biography-container']}>
                 <span className={styles['cast-biography-title']}>Biography</span>
-                <span className={styles['cast-biography-description']}>{personDetail.biography}</span>
+                <span className={styles['cast-biography-description']}>{personDetail.biography || 'No biography available.'}</span>
+              </div>
+              <div className={styles['movie-filmography-container']}>
+                <span className={styles['movie-filmography-title']}>Filmography</span>
+                {filmography && <FilmographyOverview movies={filmography} />}
               </div>
             </div>
           </>}

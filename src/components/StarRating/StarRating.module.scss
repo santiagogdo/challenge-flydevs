@@ -1,0 +1,13 @@
+@import '../../styles/colors.scss';
+
+.star-rating-container {
+  display: flex;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.star-rating-item {
+  cursor: pointer;
+  position: relative;
+}

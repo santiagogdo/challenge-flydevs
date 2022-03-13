@@ -1,5 +1,6 @@
-import Star from "./Star/Star";
-import { FC } from "react";
+import Star from './Star/Star';
+import styles from './StarRating.module.scss';
+import { FC } from 'react';
 
 export interface Props {
   maxStars?: number;
@@ -24,34 +25,25 @@ const StarRating: FC<Props> = ({
   gap = 16,
   hideInactive = false
 }) => (
-  <ul
-    style={{
-      color: inactiveColor,
-      margin: 0,
-      padding: 0,
-      listStyle: "none",
-      display: "flex"
-    }}
-  >
+  <ul className={styles['star-rating-container']}>
     {Array(hideInactive ? value : maxStars)
       .fill(null)
       .map((_, i) => i + 1)
-      .map(starNumber => (
+      .map((starNumber) => (
         <li
+          className={styles['star-rating-item']}
           title={`${starNumber} star`}
           key={starNumber}
-          onClick={() => {
-            if (onChange && editable) onChange(starNumber);
-          }}
+          onClick={() => (onChange && editable) && onChange(starNumber)}
           style={{
-            cursor: "pointer",
-            position: "relative",
             marginRight: starNumber !== maxStars ? gap : 0
           }}
         >
           <Star
             selected={starNumber <= value}
             size={size}
+            activeColor={activeColor}
+            inactiveColor={inactiveColor}
           />
         </li>
       ))}

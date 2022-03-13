@@ -5,3 +5,8 @@ $border-color: #85859e78;
 $text-color-white: #cecece;
 $text-color-grey: #5d5d6f;
 $text-color-pink: #ff3365;
+
+:export {
+    borderColor: $border-color;
+    textColorPink: $text-color-pink;
+}

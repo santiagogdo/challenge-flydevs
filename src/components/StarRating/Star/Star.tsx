@@ -3,12 +3,15 @@ import styles from './Star.module.scss';
 interface StarProps {
   selected: boolean;
   size: number | string;
+  activeColor: string;
+  inactiveColor: string;
 }
 
 const Star = (props: StarProps) => {
   return (
-    <svg className={`${styles.star} ${props.selected ? styles.selected : ''}`}
+    <svg className={styles.star}
       style={{
+        color: props.selected ? props.activeColor : props.inactiveColor,
         fill: props.selected ? 'rgba(0, 0, 0, 0.02)' : 'rgba(0, 0, 0, 0.04)',
         height: props.size,
         width: props.size,

@@ -56,8 +56,8 @@ const MovieCard = (props: MovieData) => {
           editable={false}
           value={Math.round(props.movie.vote_average / 2)}
           size={16}
-          activeColor="#ff3365"
-          inactiveColor="#85859e78"
+          activeColor={styles.textColorPink}
+          inactiveColor={styles.borderColor}
           gap={5}
         />
       </div>

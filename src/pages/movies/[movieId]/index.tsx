@@ -92,10 +92,10 @@ const MovieDetails: NextPage = () => {
               <div className={styles['rating-duration-container']}>
                 <StarRating
                   editable={false}
-                  value={movieDetails.vote_average / 2}
+                  value={Math.round(movieDetails.vote_average / 2)}
                   size={16}
-                  activeColor="#ff3365"
-                  inactiveColor="#85859e78"
+                  activeColor={styles.textColorPink}
+                  inactiveColor={styles.borderColor}
                   gap={7}
                 />
                 <span className={styles['movie-duration']}>{`${movieDetails.runtime} MIN`}</span>

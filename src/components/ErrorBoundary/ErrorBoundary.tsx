@@ -34,7 +34,9 @@ class ErrorBoundary extends Component {
     // Check if the error is thrown
     if (this.state.hasError) {
       // You can render any custom fallback UI
-      <ErrorComponent errorMessage="Whoops! Something went wrong." />
+      return (
+        <ErrorComponent errorMessage="Whoops! Something went wrong." />
+      );
     }
 
     // Return children components in case of no error

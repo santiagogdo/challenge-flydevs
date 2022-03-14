@@ -18,8 +18,6 @@ To run the project locally, you will need to:
 
     ```NEXT_PUBLIC_MOVIE_IMAGE_BASE_URL```: This is the base url that will be used to fetch images from **The Movie Database API**. You can obtain it by sending a ```GET``` request to ```https://api.themoviedb.org/3/configuration?api_key=your-api-key```.
 
-    ```NEXT_PUBLIC_PLACEHOLDER_IMAGE```: This is a placeholder image to be used during the load of the images. Since the **next/image** component will blur and resize the image, the recommended size is 10px or less for a better performance, for example, a base64 2x2 image.
-
 4) Run the development server:
 
     ```bash

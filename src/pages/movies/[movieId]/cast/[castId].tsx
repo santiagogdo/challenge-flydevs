@@ -61,7 +61,7 @@ const CastDetails: NextPage = () => {
             </div>
             <span className={styles['cast-details__name']}>{personDetail.name}</span>
             <div className={styles['cast-details__personal-info-container']}>
-              <CastPersonOverview imageSrc={`${process.env.NEXT_PUBLIC_MOVIE_IMAGE_BASE_URL}original${personDetail.profile_path}`} />
+              <CastPersonOverview imageSrc={getImageFullUrl(personDetail.profile_path, 'original')} />
               <div className={styles['cast-details__personal-info']}>
                 {personDetail.birthday && <span className={styles['cast-details__birth-date']}>{new Date(personDetail.birthday).toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' })}</span>}
                 {personDetail.place_of_birth && <span className={styles['cast-details__place-of-birth']}>{personDetail.place_of_birth}</span>}

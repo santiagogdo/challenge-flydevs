@@ -4,6 +4,7 @@ import { CSSTransition, TransitionGroup } from 'react-transition-group';
 import type { Cast } from '../../interfaces';
 import styles from './MovieCast.module.scss';
 import CastPersonOverview from '../CastPersonOverview/CastPersonOverview';
+import getImageFullUrl from '../../utilities/getImageFullUrl';
 
 interface MovieCastProps {
   cast: Array<Cast>;
@@ -43,7 +44,7 @@ const MovieCast = (props: MovieCastProps) => {
           >
             <div ref={itemRef as any}>
               <CastPersonOverview
-                imageSrc={`${process.env.NEXT_PUBLIC_MOVIE_IMAGE_BASE_URL}original${person.profile_path}`}
+                imageSrc={getImageFullUrl(person.profile_path, 'w185')}
                 name={person.name}
                 onClick={() => router.push(`${router.asPath}/cast/${person.id}`)} />
             </div>

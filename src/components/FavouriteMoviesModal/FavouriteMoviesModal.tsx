@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import type { MouseEventHandler } from 'react';
-import { config } from '../../config';
+import config from '../../config';
 import useCustomContext from '../../hooks/useCustomContext';
 import type { Genre, Movie } from '../../interfaces';
 import FavouriteMovieCard from '../FavouriteMovieCard/FavouriteMovieCard';

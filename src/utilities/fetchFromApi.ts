@@ -1,4 +1,4 @@
-import { config } from "../config";
+import config from "../config";
 
 export default async function fetchFromApi<T>(url: string): Promise<T> {
   const response = await fetch(new Request(url,

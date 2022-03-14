@@ -1,6 +1,6 @@
 import { useState, useEffect, } from 'react';
 import type { Genre } from '../interfaces';
-import { config } from '../config';
+import config from '../config';
 
 
 export default function useFetchGenres() {

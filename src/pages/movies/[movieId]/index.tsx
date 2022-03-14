@@ -9,12 +9,13 @@ import MovieCast from '../../../components/MovieCast/MovieCast';
 import PlayButton from '../../../components/PlayButton/PlayButton';
 import Spinner from '../../../components/Spinner/Spinner';
 import StarRating from '../../../components/StarRating/StarRating';
-import { config } from '../../../config';
+import config from '../../../config';
 import useCustomContext from '../../../hooks/useCustomContext';
 import type { Cast, Movie, MovieDetail } from '../../../interfaces';
 import fetchCast from '../../../utilities/fetchCast';
 import fetchMovieDetails from '../../../utilities/fetchMovieDetails';
 import fetchSimilarMovies from '../../../utilities/fetchSimilarMovies';
+import getImageFullUrl from '../../../utilities/getImageFullUrl';
 import styles from './/MovieDetails.module.scss';
 
 const MovieDetails: NextPage = () => {
@@ -76,7 +77,7 @@ const MovieDetails: NextPage = () => {
               </div>
               <div className={styles['poster-image-container']}>
                 <Image
-                  src={`${process.env.NEXT_PUBLIC_MOVIE_IMAGE_BASE_URL}original${movieDetails.backdrop_path || movieDetails.poster_path}`}
+                  src={getImageFullUrl(movieDetails.backdrop_path || movieDetails.poster_path, 'original')}
                   alt={`Poster of ${movieDetails.title}`}
                   layout="fill"
                   objectFit="cover"

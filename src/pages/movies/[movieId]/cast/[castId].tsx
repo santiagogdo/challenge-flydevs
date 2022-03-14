@@ -7,9 +7,10 @@ import CastPersonOverview from '../../../../components/CastPersonOverview/CastPe
 import { useEffect, useState } from 'react';
 import fetchPersonDetail from '../../../../utilities/fetchPersonDetail';
 import type { Cast, Movie } from '../../../../interfaces';
-import { config } from '../../../../config';
+import config from '../../../../config';
 import FilmographyOverview from '../../../../components/FilmographyOverview/FilmographyOverview';
 import fetchActorFilmography from '../../../../utilities/fetchActorFilmography';
+import getImageFullUrl from '../../../../utilities/getImageFullUrl';
 
 const CastDetails: NextPage = () => {
   const router = useRouter();
@@ -55,7 +56,7 @@ const CastDetails: NextPage = () => {
               </div>
               <div className={styles['poster-image-container']}>
                 <Image
-                  src={`${process.env.NEXT_PUBLIC_MOVIE_IMAGE_BASE_URL}original${personDetail.profile_path}`}
+                  src={getImageFullUrl(personDetail.profile_path, 'w500')}
                   alt={`Poster of ${personDetail.name}`}
                   layout="fill"
                   objectFit="cover"

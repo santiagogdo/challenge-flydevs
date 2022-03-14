@@ -1,8 +1,9 @@
 import Image from 'next/image';
 import { useRouter } from 'next/router';
-import { config } from '../../config';
+import config from '../../config';
 import useCustomContext from '../../hooks/useCustomContext';
 import type { Movie } from '../../interfaces';
+import getImageFullUrl from '../../utilities/getImageFullUrl';
 import FavouriteButton from '../FavouriteButton/FavouriteButton';
 import PlayButton from '../PlayButton/PlayButton';
 import StarRating from '../StarRating/StarRating';
@@ -42,7 +43,7 @@ const MovieCard = (props: MovieData) => {
         </div>
         <Image
           className={styles['poster-image']}
-          src={props.movie.poster_path ? `${config.movieImageBaseUrl}w500${props.movie.poster_path}` : config.placeholderImage || ''}
+          src={getImageFullUrl(props.movie.poster_path)}
           alt={`Poster image of ${props.movie.title}`}
           width={312}
           height={416}

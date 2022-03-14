@@ -1,11 +1,16 @@
 import { useRouter } from 'next/router';
+import type { MouseEventHandler } from 'react';
 import styles from './GoBackButton.module.scss';
 
-const GoBackButton = () => {
+interface GoBackButtonProps {
+  onClick?: MouseEventHandler;
+};
+
+const GoBackButton = (props: GoBackButtonProps) => {
   const router = useRouter();
 
   return (
-    <div className={styles['go-back-button']} onClick={() => router.push('/movies')}>
+    <div className={styles['go-back-button']} onClick={(event) => props.onClick ? props.onClick(event) : router.back()}>
       <svg viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg" width={20} height={20}>
         <path
           fill="currentColor"

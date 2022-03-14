@@ -56,7 +56,7 @@ const CastDetails: NextPage = () => {
               </div>
               <div className={styles['poster-image-container']}>
                 <Image
-                  src={getImageFullUrl(personDetail.profile_path, 'w500')}
+                  src={getImageFullUrl(personDetail.profile_path, 'original')}
                   alt={`Poster of ${personDetail.name}`}
                   layout="fill"
                   objectFit="cover"

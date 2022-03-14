@@ -4,18 +4,12 @@
 .card {
   position: relative;
   background-color: $secondary-background-color;
-  min-width: 200px;
+  width: 250px;
   height: 425px;
   border: 1px solid $border-color;
   border-radius: 10px;
   color: $primary-text-color;
   font-family: 'Gilroy Light';
-
-  // @media (max-width: 480px) {
-  //   & {
-  //     max-height: 695px;
-  //   }
-  // }
 }
 
 .poster {

@@ -1,5 +1,5 @@
 import { Carousel } from '@trendyol-js/react-carousel';
-import useMediaQuery from '../../hooks/useMediaQuery';
+import { useMediaQuery, useWindowSize } from 'usehooks-ts';
 import { Movie } from '../../interfaces';
 import FilmographyOverviewCard from '../FilmographyOverviewCard/FilmographyOverviewCard';
 import styles from './FilmographyOverview.module.scss';
@@ -24,31 +24,32 @@ const leftArrow = (flipArrow?: boolean) => {
 };
 
 const FilmographyOverview = (props: FilmographyOverviewProps) => {
-  const isSmallViewport = useMediaQuery('(max-width: 480px)');
+  const isSmallViewport = useMediaQuery('(max-width: 880px)');
+  const windowSize = useWindowSize();
+
+  const getCardCount = () => Math.floor(windowSize.width / 250);
 
   return (
-    <div>
-      <Carousel
-        className={styles['carousel']}
-        show={isSmallViewport ? 1 : 10}
-        slide={isSmallViewport ? 1 : 3}
-        dynamic
-        swiping={true}
-        swipeOn={0.2}
-        leftArrow={leftArrow()}
-        rightArrow={leftArrow(true)}
-        infinite={false}>
-        {
-          props.movies.map((movie, index) => {
-            return (
-              <div className={styles['filmography-card-container']} key={movie.id + index}>
-                <FilmographyOverviewCard movie={movie} />
-              </div>
-            )
-          })
-        }
-      </Carousel>
-    </div>
+    <Carousel
+      className={styles['carousel']}
+      show={getCardCount()}
+      slide={isSmallViewport ? 1 : 3}
+      dynamic
+      swiping={true}
+      swipeOn={0.2}
+      leftArrow={leftArrow()}
+      rightArrow={leftArrow(true)}
+      infinite={false}>
+      {
+        props.movies.map((movie, index) => {
+          return (
+            <div className={styles['filmography-card-container']} key={movie.id + index}>
+              <FilmographyOverviewCard movie={movie} />
+            </div>
+          )
+        })
+      }
+    </Carousel>
   );
 };
 

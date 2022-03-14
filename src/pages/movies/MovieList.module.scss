@@ -6,6 +6,12 @@
   width: 100%;
 }
 
+.spinner-wrapper {
+  width: 100%;
+  height: calc(100% - 4.5rem);
+  @include utilities.center-flex;
+}
+
 .movie-list {
   height: calc(100% - 4.5rem);
   width: 100%;

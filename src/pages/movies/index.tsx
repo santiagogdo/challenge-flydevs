@@ -7,7 +7,6 @@ import Spinner from '../../components/Spinner/Spinner';
 import Header from '../../components/Header/Header';
 import fetchMovies from '../../utilities/fetchMovies';
 import fetchMoviesBySearch from '../../utilities/fetchMoviesBySearch';
-import { config } from '../../config';
 import styles from './MovieList.module.scss';
 import FavouriteMoviesModal from '../../components/FavouriteMoviesModal/FavouriteMoviesModal';
 
@@ -87,19 +86,23 @@ const MovieList: NextPage = () => {
     <div className={styles.container}>
       <FavouriteMoviesModal isOpen={isModalOpen} onClose={toggleFavouriteMoviesModal} genres={genres} />
       <Header onChange={handleOnChange} handleFavouriteMovies={toggleFavouriteMoviesModal} />
-      {false ?
-        <Spinner />
-        : <><div onScroll={handleOnScroll} className={`${styles['movie-list']} ${isLoading ? styles['movie-list-loading-more'] : ''}`}>
-          {(search && movieSearchResult || movies).map((movie, index) => {
-            return (
-              <MovieCard
-                key={movie.id + index}
-                movie={movie}
-                genres={getMovieGenres(movie)}
-              />
-            )
-          })}
+      {isLoading && (!search && pageNum < 2 || search && searchPageNum < 2) ?
+        <div className={styles['spinner-wrapper']}>
+          <Spinner />
         </div>
+        :
+        <>
+          <div onScroll={handleOnScroll} className={`${styles['movie-list']} ${isLoading ? styles['movie-list-loading-more'] : ''}`}>
+            {(search && movieSearchResult || movies).map((movie, index) => {
+              return (
+                <MovieCard
+                  key={movie.id + index}
+                  movie={movie}
+                  genres={getMovieGenres(movie)}
+                />
+              )
+            })}
+          </div>
           {isLoading &&
             <div className={styles['loading-more-spinner']}>
               <Spinner />

@@ -35,3 +35,7 @@ To run the project locally, you will need to:
 You can deploy the app using the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
 Check out [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+
+## Demo
+
+If you want to see the app in action, you can take a look at the [production environment](https://challenge-flydevs.vercel.app) I set up for the repository.

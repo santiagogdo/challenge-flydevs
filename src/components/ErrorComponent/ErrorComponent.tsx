@@ -11,13 +11,13 @@ interface ErrorComponentProps {
 
 const ErrorComponent = (props: ErrorComponentProps) => {
   return (
-    <div className={styles['nothing-to-show-container']}>
-      <div className={styles['go-back-button-wrapper']}>
+    <div className={styles['error-page']}>
+      <div className={styles['error-page__go-back-button-container']}>
         <GoBackButton onClick={(event) => props.onGoBack && props.onGoBack(event)} />
       </div>
-      <div className={styles['content-container']}>
-        <span className={styles['error-description']}>{props.errorMessage}</span>
-        <div className={styles['image-wrapper']}>
+      <div className={styles['error-page__content-container']}>
+        <span className={styles['error-page__error-description']}>{props.errorMessage}</span>
+        <div className={styles['error-page__image-wrapper']}>
           <Image
             src="/nothing-to-show.svg"
             alt="Nothing to show"

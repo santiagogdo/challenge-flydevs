@@ -9,13 +9,13 @@
   z-index: 2;
   color: $text-color-white;
   user-select: none;
-}
 
-.go-back-button:active {
-  color: $primary-text-color;
-}
+  &:active {
+    color: $primary-text-color;
+  }
 
-.go-back-text {
-  font-size: 1.1em;
-  margin-left: 0.3rem;
+  &__text {
+    font-size: 1.1em;
+    margin-left: 0.3rem;
+  }
 }

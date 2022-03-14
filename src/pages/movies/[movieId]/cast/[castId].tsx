@@ -11,6 +11,7 @@ import config from '../../../../config';
 import FilmographyOverview from '../../../../components/FilmographyOverview/FilmographyOverview';
 import fetchActorFilmography from '../../../../utilities/fetchActorFilmography';
 import getImageFullUrl from '../../../../utilities/getImageFullUrl';
+import GoBackButton from '../../../../components/GoBackButton/GoBackButton';
 
 const CastDetails: NextPage = () => {
   const router = useRouter();
@@ -34,53 +35,46 @@ const CastDetails: NextPage = () => {
   }, [router.query.castId]);
 
   return (
-    <div className={styles.container}>
+    <div className={styles['cast-details']}>
       {isLoading ?
-        <div className={styles['spinner-wrapper']}>
+        <div className={styles['cast-details__spinner-container']}>
           <Spinner />
         </div>
         : <>
           {personDetail && <>
-            <div className={styles['poster-container']}>
-              <div className={styles['go-back-button']} onClick={() => router.push(`/movies/${getMovieId()}`)}>
-                <svg viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg" width={20} height={20}>
-                  <path
-                    fill="currentColor"
-                    d="M353 450a15 15 0 0 1-10.61-4.39L157.5 260.71a15 15 0 0 1 0-21.21L342.39 54.6a15 15 0 1 1 21.22 21.21L189.32 250.1l174.29 174.29A15 15 0 0 1 353 450Z"
-                    data-name={1}
-                  />
-                </svg>
-                <span className={styles['go-back-text']}>Back</span>
+            <div className={styles['cast-details__poster-container']}>
+              <div className={styles['cast-details__go-back-button-container']}>
+                <GoBackButton />
               </div>
-              <div className={styles['overlay']}>
+              <div className={styles['cast-details__overlay']}>
               </div>
-              <div className={styles['poster-image-container']}>
+              <div className={styles['cast-details__poster-image-container']}>
                 <Image
                   src={getImageFullUrl(personDetail.profile_path, 'original')}
                   alt={`Poster of ${personDetail.name}`}
                   layout="fill"
                   objectFit="cover"
-                  className={styles.poster}
+                  className={styles['cast-details__poster']}
                   placeholder='blur'
                   blurDataURL={config.placeholderImage} />
               </div>
             </div>
-            <span className={styles['cast-name']}>{personDetail.name}</span>
-            <div className={styles['cast-personal-info-container']}>
+            <span className={styles['cast-details__name']}>{personDetail.name}</span>
+            <div className={styles['cast-details__personal-info-container']}>
               <CastPersonOverview imageSrc={`${process.env.NEXT_PUBLIC_MOVIE_IMAGE_BASE_URL}original${personDetail.profile_path}`} />
-              <div className={styles['cast-personal-info']}>
-                {personDetail.birthday && <span className={styles['cast-birth-date']}>{new Date(personDetail.birthday).toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' })}</span>}
-                {personDetail.place_of_birth && <span className={styles['cast-place-of-birth']}>{personDetail.place_of_birth}</span>}
-                <span className={styles['cast-occupation']}>{personDetail.known_for_department}</span>
+              <div className={styles['cast-details__personal-info']}>
+                {personDetail.birthday && <span className={styles['cast-details__birth-date']}>{new Date(personDetail.birthday).toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' })}</span>}
+                {personDetail.place_of_birth && <span className={styles['cast-details__place-of-birth']}>{personDetail.place_of_birth}</span>}
+                <span className={styles['cast-details__occupation']}>{personDetail.known_for_department}</span>
               </div>
             </div>
-            <div className={styles['content-container']}>
-              <div className={styles['cast-biography-container']}>
-                <span className={styles['cast-biography-title']}>Biography</span>
-                <span className={styles['cast-biography-description']}>{personDetail.biography || 'No biography available.'}</span>
+            <div className={styles['cast-details__content-container']}>
+              <div className={styles['cast-details__biography-container']}>
+                <span className={styles['cast-details__biography-title']}>Biography</span>
+                <span className={styles['cast-details__biography-description']}>{personDetail.biography || 'No biography available.'}</span>
               </div>
-              <div className={styles['movie-filmography-container']}>
-                <span className={styles['movie-filmography-title']}>Filmography</span>
+              <div className={styles['cast-details__filmography-container']}>
+                <span className={styles['cast-details__filmography-title']}>Filmography</span>
                 {filmography && <FilmographyOverview movies={filmography} />}
               </div>
             </div>

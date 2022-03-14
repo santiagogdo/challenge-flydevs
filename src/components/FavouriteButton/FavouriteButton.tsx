@@ -10,7 +10,7 @@ interface FavouriteButtonProps {
 
 const FavouriteButton = (props: FavouriteButtonProps) => {
   return (
-    <svg onClick={props.onClick} className={`${styles.heart} ${props.isSelected ? styles.selected : ''}`}
+    <svg onClick={props.onClick} className={`${styles['favourite-button']} ${props.isSelected ? styles['favourite-button--selected'] : ''}`}
       style={{
         height: props.height || 30,
         width: props.width || 30,

@@ -8,11 +8,11 @@ interface SearchBarProps {
 
 const SearchBar = (props: SearchBarProps) => {
   return (
-    <div className={styles['search-container']}>
-      <div className={styles.icon}>
+    <div className={styles['search-bar']}>
+      <div className={styles['search-bar__icon']}>
         <Image src="/search-icon.svg" alt="Search icon" width={20} height={20} />
       </div>
-      <input type="text" className={styles.search} onChange={props.onChange} />
+      <input type="text" className={styles['search-bar__input']} onChange={props.onChange} />
     </div>
   );
 }

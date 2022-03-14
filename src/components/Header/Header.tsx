@@ -9,9 +9,9 @@ interface HeaderProps {
 
 const Header = (props: HeaderProps) => {
   return (
-    <div className={styles['header-container']}>
-      <span className={styles['header-text']} onClick={props.handleFavouriteMovies}>Favourites</span>
-      <div className={styles['search-wrapper']}>
+    <div className={styles['header']}>
+      <span className={styles['header__text']} onClick={props.handleFavouriteMovies}>Favourites</span>
+      <div className={styles['header__search-wrapper']}>
         <SearchBar onChange={props.onChange} />
       </div>
     </div>

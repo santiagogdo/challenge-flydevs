@@ -1,141 +1,141 @@
 @use '/src/styles/utilities.scss';
 @import '../../../styles/colors.scss';
 
-.container {
+.movie-details {
   width: 100%;
   height: 100%;
   overflow-y: auto;
-}
 
-.spinner-wrapper {
-  width: 100%;
-  height: 100%;
-  @include utilities.center-flex;
-}
+  @media (min-width: 1920px) {
+    & {
+      flex-wrap: nowrap;
+    }
 
-.poster-container {
-  position: relative;
-  top: 0;
-  width: 100%;
-}
-
-.poster-image-container {
-  position: relative;
-  top: 0;
-  width: 100%;
-  height: 256px;
-}
-
-.poster {
-  filter: grayscale(100%);
-}
-
-@media (min-width: 1920px) {
-  .container {
-    flex-wrap: nowrap;
+    .movie-details__poster-image-container {
+      height: 500px;
+    }
   }
 
-  .poster-image-container {
-    height: 500px;
+  &__spinner-container {
+    width: 100%;
+    height: 100%;
+    @include utilities.center-flex;
   }
-}
 
-.favourite-button-container {
-  position: absolute;
-  top: 25px;
-  right: 16px;
-  z-index: 2;
-}
+  &__poster-container {
+    position: relative;
+    top: 0;
+    width: 100%;
+  }
 
-.go-back-button-wrapper {
-  position: absolute;
-  top: 20px;
-  left: 16px;
-  width: 70px;
-  height: 40px;
-}
+  &__go-back-button-container {
+    position: absolute;
+    top: 20px;
+    left: 16px;
+    width: 70px;
+    height: 40px;
+  }
 
-.play-button-wrapper {
-  position: absolute;
-  z-index: 2;
-  transition: opacity ease 0.2s;
-  @include utilities.center-absolute;
-}
+  &__favourite-button-container {
+    position: absolute;
+    top: 25px;
+    right: 16px;
+    z-index: 2;
+  }
 
-.overlay {
-  height: 100%;
-  width: 100%;
-  top: 0;
-  position: absolute;
-  z-index: 1;
-  cursor: pointer;
-  background: linear-gradient(rgba(64, 62, 90, 0), rgba(25, 25, 38, 1));
-  background-color: rgba(24, 24, 37, 0.7);
-}
+  &__overlay {
+    height: 100%;
+    width: 100%;
+    top: 0;
+    position: absolute;
+    z-index: 1;
+    cursor: pointer;
+    background: linear-gradient(rgba(64, 62, 90, 0), rgba(25, 25, 38, 1));
+    background-color: rgba(24, 24, 37, 0.7);
+  }
 
-.content-container {
-  padding-left: 1rem;
-  padding-right: 1rem;
-  padding-bottom: 1rem;
-}
+  &__play-button-container {
+    position: absolute;
+    z-index: 2;
+    transition: opacity ease 0.2s;
+    @include utilities.center-absolute;
+  }
 
-.movie-title {
-  display: block;
-  font-family: 'Okta Neue Bold';
-  font-size: 2.5em;
-  line-height: 1.25;
-  color: $text-color-white;
-}
+  &__poster-image-container {
+    position: relative;
+    top: 0;
+    width: 100%;
+    height: 256px;
+  }
 
-.rating-duration-container {
-  display: flex;
-  align-items: center;
-}
+  &__poster {
+    filter: grayscale(100%);
+  }
 
-.movie-genres {
-  display: block;
-  padding-top: 1rem;
-  margin-bottom: 0.5rem;
-  font-family: 'Gilroy Light';
-  font-size: 1em;
-  color: $text-color-pink;
-}
+  &__content {
+    padding-left: 1rem;
+    padding-right: 1rem;
+    padding-bottom: 1rem;
+  }
 
-.movie-duration {
-  display: block;
-  padding-left: 0.5rem;
-  font-family: 'Okta Neue Bold';
-  font-size: 1em;
-  color: $text-color-grey;
-}
+  &__movie-title {
+    display: block;
+    font-family: 'Okta Neue Bold';
+    font-size: 2.5em;
+    line-height: 1.25;
+    color: $text-color-white;
+  }
 
-.movie-storyline-container {
-  margin: 2rem 0;
-}
+  &__movie-genres {
+    display: block;
+    padding-top: 1rem;
+    margin-bottom: 0.5rem;
+    font-family: 'Gilroy Light';
+    font-size: 1em;
+    color: $text-color-pink;
+  }
 
-.movie-storyline-title {
-  display: block;
-  color: $text-color-white;
-  font-family: 'Okta Neue Bold';
-  font-size: 1.2em;
-}
+  &__rating-duration-container {
+    display: flex;
+    align-items: center;
+  }
 
-.movie-storyline-description {
-  margin-top: 0.5rem;
-  display: block;
-  color: $primary-text-color;
-  line-height: 1.5;
-  font-size: 1.1em;
-}
+  &__movie-duration {
+    display: block;
+    padding-left: 0.5rem;
+    font-family: 'Okta Neue Bold';
+    font-size: 1em;
+    color: $text-color-grey;
+  }
 
-.movie-similar-movies-container {
-  margin-top: 2rem;
-}
+  &__movie-storyline-container {
+    margin: 2rem 0;
+  }
 
-.movie-similar-movies-title {
-  display: block;
-  color: $text-color-white;
-  font-family: 'Okta Neue Bold';
-  font-size: 1.2em;
-  margin-bottom: 1rem;
+  &__movie-storyline-title {
+    display: block;
+    color: $text-color-white;
+    font-family: 'Okta Neue Bold';
+    font-size: 1.2em;
+  }
+
+  &__movie-storyline-description {
+    margin-top: 0.5rem;
+    display: block;
+    color: $primary-text-color;
+    line-height: 1.5;
+    font-size: 1.1em;
+  }
+
+  &__movie-similar-movies-container {
+    margin-top: 2rem;
+  }
+
+  &__movie-similar-movies-title {
+    display: block;
+    color: $text-color-white;
+    font-family: 'Okta Neue Bold';
+    font-size: 1.2em;
+    margin-bottom: 1rem;
+  }
 }

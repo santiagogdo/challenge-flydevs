@@ -14,15 +14,15 @@ const FilmographyOverviewCard = (props: FilmographyOverviewProps) => {
   const router = useRouter();
 
   return (
-    <div className={styles.card}>
-      <div className={styles.poster}>
-        <div className={styles['overlay']} onClick={() => router.push(`/movies/${props.movie.id}`)} >
-          <div className={styles['play-button-wrapper']}>
+    <div className={styles['filmography-overview-card']}>
+      <div className={styles['filmography-overview-card__poster']}>
+        <div className={styles['filmography-overview-card__overlay']} onClick={() => router.push(`/movies/${props.movie.id}`)} >
+          <div className={styles['filmography-overview-card__play-button-wrapper']}>
             <PlayButton size={70} />
           </div>
         </div>
         <Image
-          className={styles['poster-image']}
+          className={styles['filmography-overview-card__poster-image']}
           src={getImageFullUrl(props.movie.poster_path)}
           alt={`Poster image of ${props.movie.title}`}
           width={312}
@@ -31,11 +31,11 @@ const FilmographyOverviewCard = (props: FilmographyOverviewProps) => {
           placeholder='blur'
           blurDataURL={config.placeholderImage}
           draggable={false}
-          onDragStart={(event) => event.preventDefault()}/>
+          onDragStart={(event) => event.preventDefault()} />
       </div>
-      <span className={styles['movie-title']}>{props.movie.title}</span>
+      <span className={styles['filmography-overview-card__movie-title']}>{props.movie.title}</span>
       {props.movie.release_date &&
-        <span className={styles['movie-release-date']}>{new Date(props.movie.release_date).toLocaleDateString('en-US', { year: 'numeric' })}</span>
+        <span className={styles['filmography-overview-card__movie-release-date']}>{new Date(props.movie.release_date).toLocaleDateString('en-US', { year: 'numeric' })}</span>
       }
     </div>
   );

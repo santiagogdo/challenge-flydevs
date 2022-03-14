@@ -18,7 +18,7 @@ const GoBackButton = (props: GoBackButtonProps) => {
           data-name={1}
         />
       </svg>
-      <span className={styles['go-back-text']}>Back</span>
+      <span className={styles['go-back-button__text']}>Back</span>
     </div>
   );
 };

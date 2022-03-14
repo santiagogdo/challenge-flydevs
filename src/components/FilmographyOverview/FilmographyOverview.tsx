@@ -10,7 +10,7 @@ interface FilmographyOverviewProps {
 
 const leftArrow = (flipArrow?: boolean) => {
   return (
-    <div className={`${styles['arrow-button-container']} ${flipArrow && styles['flip-arrow'] || ''}`}>
+    <div className={`${styles['arrow-button-container']} ${flipArrow && styles['arrow-button-container--flip-arrow'] || ''}`}>
       <svg viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg" width={30} height={30}>
         <path
           transform={flipArrow && 'scale (-1, 1)' || ''} transform-origin={flipArrow && 'center' || ''}

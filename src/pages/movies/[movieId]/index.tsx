@@ -1,4 +1,4 @@
-import { NextPage } from 'next';
+import type { NextPage } from 'next';
 import Image from 'next/image';
 import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
@@ -56,40 +56,40 @@ const MovieDetails: NextPage = () => {
   };
 
   return (
-    <div className={styles.container}>
+    <div className={styles['movie-details']}>
       {isLoading ?
-        <div className={styles['spinner-wrapper']}>
+        <div className={styles['movie-details__spinner-container']}>
           <Spinner />
         </div>
         : <>
           {movieDetails && <>
-            <div className={styles['poster-container']}>
-              <div className={styles['go-back-button-wrapper']}>
+            <div className={styles['movie-details__poster-container']}>
+              <div className={styles['movie-details__go-back-button-container']}>
                 <GoBackButton />
               </div>
-              <div className={styles['favourite-button-container']}>
+              <div className={styles['movie-details__favourite-button-container']}>
                 <FavouriteButton isSelected={isSelected()} onClick={handleOnClick} />
               </div>
-              <div className={styles['overlay']}>
-                <div className={styles['play-button-wrapper']}>
+              <div className={styles['movie-details__overlay']}>
+                <div className={styles['movie-details__play-button-container']}>
                   <PlayButton size={70} />
                 </div>
               </div>
-              <div className={styles['poster-image-container']}>
+              <div className={styles['movie-details__poster-image-container']}>
                 <Image
                   src={getImageFullUrl(movieDetails.backdrop_path || movieDetails.poster_path, 'original')}
                   alt={`Poster of ${movieDetails.title}`}
                   layout="fill"
                   objectFit="cover"
-                  className={styles.poster}
+                  className={styles['movie-details__poster']}
                   placeholder='blur'
                   blurDataURL={config.placeholderImage} />
               </div>
             </div>
-            <div className={styles['content-container']}>
-              <span className={styles['movie-title']}>{movieDetails.title}</span>
-              <span className={styles['movie-genres']}>{movieDetails.genres.map((genre) => genre.name).join(', ')}</span>
-              <div className={styles['rating-duration-container']}>
+            <div className={styles['movie-details__content']}>
+              <span className={styles['movie-details__movie-title']}>{movieDetails.title}</span>
+              <span className={styles['movie-details__movie-genres']}>{movieDetails.genres.map((genre) => genre.name).join(', ')}</span>
+              <div className={styles['movie-details__rating-duration-container']}>
                 <StarRating
                   editable={false}
                   value={Math.round(movieDetails.vote_average / 2)}
@@ -98,15 +98,15 @@ const MovieDetails: NextPage = () => {
                   inactiveColor={styles.borderColor}
                   gap={7}
                 />
-                <span className={styles['movie-duration']}>{`${movieDetails.runtime} MIN`}</span>
+                <span className={styles['movie-details__movie-duration']}>{`${movieDetails.runtime} MIN`}</span>
               </div>
-              <div className={styles['movie-storyline-container']}>
-                <span className={styles['movie-storyline-title']}>Storyline</span>
-                <span className={styles['movie-storyline-description']}>{movieDetails.overview}</span>
+              <div className={styles['movie-details__movie-storyline-container']}>
+                <span className={styles['movie-details__movie-storyline-title']}>Storyline</span>
+                <span className={styles['movie-details__movie-storyline-description']}>{movieDetails.overview}</span>
               </div>
               <MovieCast cast={movieCast} />
-              <div className={styles['movie-similar-movies-container']}>
-                <span className={styles['movie-similar-movies-title']}>Similar movies</span>
+              <div className={styles['movie-details__movie-similar-movies-container']}>
+                <span className={styles['movie-details__movie-similar-movies-title']}>Similar movies</span>
                 <FilmographyOverview movies={similarMovies} />
               </div>
             </div>

@@ -10,19 +10,19 @@ interface CastPersonOverviewProps {
 
 const CastPersonOverview = (props: CastPersonOverviewProps) => {
   return (
-    <div className={styles['cast-person-overview-container']}>
-      <div className={props.onClick ? styles['person-image-container'] : ''} onClick={props.onClick}>
+    <div className={styles['cast-person-overview']}>
+      <div className={props.onClick ? styles['cast-person-overview__image-container'] : ''} onClick={props.onClick}>
         <Image
           src={props.imageSrc}
           alt={`Photo of ${props.name}`}
           width={100}
           height={100}
           objectFit="cover"
-          className={styles['person-image']}
+          className={styles['cast-person-overview__image']}
           placeholder='blur'
           blurDataURL={config.placeholderImage} />
       </div>
-      {props.name && <span className={styles['person-name']}>{props.name}</span>}
+      {props.name && <span className={styles['cast-person-overview__name']}>{props.name}</span>}
     </div>)
 };
 

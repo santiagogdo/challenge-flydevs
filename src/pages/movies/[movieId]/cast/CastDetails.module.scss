@@ -1,149 +1,134 @@
 @use '/src/styles/utilities.scss';
 @import '/src/styles/colors.scss';
 
-.container {
+.cast-details {
   width: 100%;
   height: 100%;
   overflow-y: auto;
-}
 
-.spinner-wrapper {
-  width: 100%;
-  height: 100%;
-  @include utilities.center-flex;
-}
+  @media (min-width: 1920px) {
+    & {
+      flex-wrap: nowrap;
+    }
 
-.poster-container {
-  position: relative;
-  top: 0;
-  width: 100%;
-}
-
-.poster-image-container {
-  position: relative;
-  top: 0;
-  width: 100%;
-  height: 256px;
-}
-
-.cast-personal-info-container {
-  display: flex;
-  align-items: center;
-  margin-left: 1rem;
-}
-
-.cast-personal-info {
-  color: $text-color-white;
-  font-family: 'Gilroy Light';
-  font-size: 1em;
-  margin-left: 1rem;
-}
-
-.cast-birth-date {
-  display: block;
-}
-
-.cast-place-of-birth {
-  display: block;
-  padding-top: 0.5rem;
-
-}
-
-.cast-occupation {
-  display: block;
-  padding-top: 0.5rem;
-  color: $text-color-pink;
-}
-
-.poster {
-  filter: grayscale(100%);
-}
-
-@media (min-width: 1920px) {
-  .container {
-    flex-wrap: nowrap;
+    .cast-details__poster-image-container {
+      height: 500px;
+    }
   }
 
-  .poster-image-container {
-    height: 500px;
+  &__spinner-container {
+    width: 100%;
+    height: 100%;
+    @include utilities.center-flex;
   }
-}
 
-.go-back-button {
-  position: absolute;
-  top: 20px;
-  left: 16px;
-  display: flex;
-  align-items: center;
-  width: 70px;
-  height: 40px;
-  z-index: 2;
-  color: $text-color-white;
-  user-select: none;
-}
+  &__poster-container {
+    position: relative;
+    top: 0;
+    width: 100%;
+  }
 
-.go-back-button:active {
-  color: $primary-text-color;
-}
+  &__go-back-button-container {
+    position: absolute;
+    top: 20px;
+    left: 16px;
+    width: 70px;
+    height: 40px;
+  }
 
-.go-back-text {
-  font-size: 1.1em;
-  margin-left: 0.3rem;
-}
+  &__overlay {
+    height: 100%;
+    width: 100%;
+    top: 0;
+    position: absolute;
+    z-index: 1;
+    background: linear-gradient(rgba(64, 62, 90, 0), rgba(25, 25, 38, 1));
+    background-color: rgba(24, 24, 37, 0.7);
+  }
 
-.overlay {
-  height: 100%;
-  width: 100%;
-  top: 0;
-  position: absolute;
-  z-index: 1;
-  background: linear-gradient(rgba(64, 62, 90, 0), rgba(25, 25, 38, 1));
-  background-color: rgba(24, 24, 37, 0.7);
-}
+  &__poster-image-container {
+    position: relative;
+    top: 0;
+    width: 100%;
+    height: 256px;
+  }
 
-.content-container {
-  padding-left: 1rem;
-  padding-right: 1rem;
-  padding-bottom: 1rem;
-}
+  &__poster {
+    filter: grayscale(100%);
+  }
 
-.cast-name {
-  display: block;
-  font-family: 'Okta Neue Bold';
-  font-size: 2.5em;
-  line-height: 1.25;
-  color: $text-color-white;
-  margin-left: 1rem;
-  margin-bottom: 1rem;
-}
+  &__name {
+    display: block;
+    font-family: 'Okta Neue Bold';
+    font-size: 2.5em;
+    line-height: 1.25;
+    color: $text-color-white;
+    margin-left: 1rem;
+    margin-bottom: 1rem;
+  }
 
-.cast-biography-container {
-  margin: 2rem 0;
-}
+  &__personal-info-container {
+    display: flex;
+    align-items: center;
+    margin-left: 1rem;
+  }
 
-.cast-biography-title {
-  display: block;
-  color: $text-color-white;
-  font-family: 'Okta Neue Bold';
-  font-size: 1.2em;
-}
+  &__personal-info {
+    color: $text-color-white;
+    font-family: 'Gilroy Light';
+    font-size: 1em;
+    margin-left: 1rem;
+  }
 
-.cast-biography-description {
-  margin-top: 0.5rem;
-  display: block;
-  color: $primary-text-color;
-  line-height: 1.5;
-  font-size: 1.1em;
-}
+  &_birth-date {
+    display: block;
+  }
 
-.movie-filmography-container {
-  margin-top: 2rem;
-}
+  &_place-of-birth {
+    display: block;
+    padding-top: 0.5rem;
+  }
 
-.movie-filmography-title {
-  display: block;
-  color: $text-color-white;
-  font-family: 'Okta Neue Bold';
-  font-size: 1.2em;
-  margin-bottom: 1rem;
+  &_occupation {
+    display: block;
+    padding-top: 0.5rem;
+    color: $text-color-pink;
+  }
+
+  &__content-container {
+    padding-left: 1rem;
+    padding-right: 1rem;
+    padding-bottom: 1rem;
+  }
+
+  &__biography-container {
+    margin: 2rem 0;
+  }
+
+  &__biography-title {
+    display: block;
+    color: $text-color-white;
+    font-family: 'Okta Neue Bold';
+    font-size: 1.2em;
+  }
+
+  &__biography-description {
+    margin-top: 0.5rem;
+    display: block;
+    color: $primary-text-color;
+    line-height: 1.5;
+    font-size: 1.1em;
+  }
+
+  &__filmography-container {
+    margin-top: 2rem;
+  }
+
+  &__filmography-title {
+    display: block;
+    color: $text-color-white;
+    font-family: 'Okta Neue Bold';
+    font-size: 1.2em;
+    margin-bottom: 1rem;
+  }
 }

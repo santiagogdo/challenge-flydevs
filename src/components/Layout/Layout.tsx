@@ -16,8 +16,8 @@ const Layout: NextPage = ({ children }) => {
         <link rel="preload" as="font" href="/fonts/Okta-Neue-Bold.woff" type="font/woff" crossOrigin="anonymous" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <div className={styles.container}>
-        <main className={styles.main}>
+      <div className={styles.layout}>
+        <main className={styles['layout__content']}>
           {children}
         </main>
       </div>

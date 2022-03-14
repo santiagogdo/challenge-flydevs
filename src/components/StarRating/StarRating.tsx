@@ -25,13 +25,13 @@ const StarRating: FC<Props> = ({
   gap = 16,
   hideInactive = false
 }) => (
-  <ul className={styles['star-rating-container']}>
+  <ul className={styles['star-rating']}>
     {Array(hideInactive ? value : maxStars)
       .fill(null)
       .map((_, i) => i + 1)
       .map((starNumber) => (
         <li
-          className={styles['star-rating-item']}
+          className={styles['star-rating__item']}
           title={`${starNumber} star`}
           key={starNumber}
           onClick={() => (onChange && editable) && onChange(starNumber)}

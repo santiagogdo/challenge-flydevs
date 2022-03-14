@@ -1,12 +1,12 @@
 @import '../../styles/colors.scss';
 
-.container {
+.layout {
   width: 100%;
   height: 100%;
   background-color: $background-color;
-}
 
-.main {
-  width: 100%;
-  height: 100%;
+  &__content {
+    width: 100%;
+    height: 100%;
+  }
 }

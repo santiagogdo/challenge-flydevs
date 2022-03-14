@@ -26,12 +26,11 @@ const FavouriteMoviesModal = (props: FavouriteMoviesModalProps) => {
       header="Favourite movies"
       onClose={props.onClose}
     >
-
-      <div className={styles['favourite-movies-body-content']}>
+      <div className={styles['favourite-movies-modal']}>
         {state.length > 0 &&
           state.map((movie, index) => {
             return (
-              <div key={movie.id + index} className={styles['favourite-movies-card-container']}>
+              <div key={movie.id + index} className={styles['favourite-movies-modal__card-container']}>
                 <FavouriteMovieCard
                   movie={movie}
                   genres={getMovieGenres(movie)}
@@ -40,9 +39,9 @@ const FavouriteMoviesModal = (props: FavouriteMoviesModalProps) => {
             )
           }) ||
           <>
-            <div className={styles['nothing-to-show-container']}>
+            <div className={styles['favourite-movies-modal__nothing-to-show-container']}>
               <span>You haven&apos;t added any movies to your favourites yet.</span>
-              <div className={styles['image-wrapper']}>
+              <div className={styles['favourite-movies-modal__image-wrapper']}>
                 <Image
                   src="/nothing-to-show.svg"
                   alt="Nothing to show"

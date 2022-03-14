@@ -1,4 +1,4 @@
-import { NextPage } from 'next';
+import type { NextPage } from 'next';
 import { type ChangeEvent, type UIEvent, useEffect, useState, useRef } from 'react';
 import useFetchGenres from '../../hooks/useFetchGenres';
 import type { Movie } from '../../interfaces';
@@ -83,16 +83,16 @@ const MovieList: NextPage = () => {
   };
 
   return (
-    <div className={styles.container}>
+    <div className={styles['movie-list']}>
       <FavouriteMoviesModal isOpen={isModalOpen} onClose={toggleFavouriteMoviesModal} genres={genres} />
       <Header onChange={handleOnChange} handleFavouriteMovies={toggleFavouriteMoviesModal} />
       {isLoading && (!search && pageNum < 2 || search && searchPageNum < 2) ?
-        <div className={styles['spinner-wrapper']}>
+        <div className={styles['movie-list__spinner-container']}>
           <Spinner />
         </div>
         :
         <>
-          <div onScroll={handleOnScroll} className={`${styles['movie-list']} ${isLoading ? styles['movie-list-loading-more'] : ''}`}>
+          <div onScroll={handleOnScroll} className={`${styles['movie-list__container']} ${isLoading ? styles['movie-list__loading-more'] : ''}`}>
             {(search && movieSearchResult || movies).map((movie, index) => {
               return (
                 <MovieCard
@@ -104,7 +104,7 @@ const MovieList: NextPage = () => {
             })}
           </div>
           {isLoading &&
-            <div className={styles['loading-more-spinner']}>
+            <div className={styles['movie-list__loading-more-spinner']}>
               <Spinner />
             </div>
           }

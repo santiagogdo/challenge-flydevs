@@ -28,20 +28,20 @@ const FavouriteMovieCard = (props: FavouriteMovieCardProps) => {
   };
 
   return (
-    <div className={styles.card}>
-      <div className={styles.poster}>
-        <div className={styles['favourite-button-container']}>
+    <div className={styles['favourite-movie-card']}>
+      <div className={styles['favourite-movie-card__poster']}>
+        <div className={styles['favourite-movie-card__button-container']}>
           <FavouriteButton isSelected={isSelected()} onClick={handleOnClick} />
         </div>
-        <div className={styles['overlay-wrapper']}>
-          <div className={styles['overlay']} onClick={() => router.push(`/movies/${props.movie.id}`)} >
-            <div className={styles['play-button-wrapper']}>
+        <div className={styles['favourite-movie-card__overlay-container']}>
+          <div className={styles['favourite-movie-card__overlay']} onClick={() => router.push(`/movies/${props.movie.id}`)} >
+            <div className={styles['favourite-movie-card__play-button-container']}>
               <PlayButton size={70} />
             </div>
           </div>
         </div>
         <Image
-          className={styles['poster-image']}
+          className={styles['favourite-movie-card__poster-image']}
           src={getImageFullUrl(props.movie.poster_path)}
           alt={`Poster image of ${props.movie.title}`}
           width={312}
@@ -49,8 +49,8 @@ const FavouriteMovieCard = (props: FavouriteMovieCardProps) => {
           layout="responsive"
           placeholder='blur'
           blurDataURL={config.placeholderImage} />
-        <div className={styles['star-rating-container']}>
-          <span className={styles['movie-genres']}>{props.genres.join(', ')}</span>
+        <div className={styles['favourite-movie-card__star-rating-container']}>
+          <span className={styles['favourite-movie-card__movie-genres']}>{props.genres.join(', ')}</span>
           <StarRating
             editable={false}
             value={Math.round(props.movie.vote_average / 2)}
@@ -61,12 +61,12 @@ const FavouriteMovieCard = (props: FavouriteMovieCardProps) => {
           />
         </div>
       </div>
-      <div className={styles['movie-content-container']}>
-        <span className={styles['movie-title']}>{props.movie.title}</span>
+      <div className={styles['favourite-movie-card__info-container']}>
+        <span className={styles['favourite-movie-card__movie-title']}>{props.movie.title}</span>
         {props.movie.release_date &&
-          <span className={styles['movie-duration']}>{new Date(props.movie.release_date).toLocaleDateString('en-US', { year: 'numeric' })}</span>
+          <span className={styles['favourite-movie-card__movie-duration']}>{new Date(props.movie.release_date).toLocaleDateString('en-US', { year: 'numeric' })}</span>
         }
-        <span className={styles['movie-description']}>{props.movie.overview}</span>
+        <span className={styles['favourite-movie-card__movie-description']}>{props.movie.overview}</span>
       </div>
     </div>
   );

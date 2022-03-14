@@ -6,96 +6,56 @@ $transition-out-center-transform: translate(-50%, -50%) scale(0);
 $transition-in-transform: scale(1);
 $transition-out-transform: scale(0);
 
-.modal-overlay {
-  position: absolute;
-  z-index: 3;
-  width: 100%;
-  height: 100%;
-  background-color: $background-color;
-  opacity: 0.7;
-}
+.modal {
+  &__container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    z-index: 3;
+    max-height: 80%;
+    border-radius: 10px;
+    background-color: $secondary-background-color;
+    box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
+    opacity: 0;
 
-.modal-container {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  z-index: 3;
-  max-height: 80%;
-  border-radius: 10px;
-  background-color: $secondary-background-color;
-  box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
-  opacity: 0;
-
-  @media (max-width: 480px) {
-    & {
-      top: 0;
-      left: 0;
-      max-height: 100%;
-      height: 100%;
-      width: 100%;
+    @media (max-width: 480px) {
+      & {
+        top: 0;
+        left: 0;
+        max-height: 100%;
+        height: 100%;
+        width: 100%;
+      }
     }
   }
-}
 
-.modal-header {
-  height: 80px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.modal-body {
-  width: 100%;
-  height: calc(100% - 80px);
-}
-
-.modal-header-title {
-  color: $primary-text-color;
-  font-family: "Okta Neue Normal";
-  font-size: 1.6em;
-  flex-grow: 1;
-  text-align: center;
-}
-
-.overlay-transition {
-  &-appear {
-    opacity: 0;
+  &__header {
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 
-  &-appear-active {
-    opacity: 0.7;
-    transition: $transition-settings;
+  &__header-title {
+    color: $primary-text-color;
+    font-family: "Okta Neue Normal";
+    font-size: 1.6em;
+    flex-grow: 1;
+    text-align: center;
   }
 
-  &-appear-done {
-    opacity: 0.7;
+  &__close-button {
+    cursor: pointer;
+    flex-grow: 0;
+    padding-right: 1rem;
   }
 
-  &-enter {
-    opacity: 0;
+  &__body {
+    width: 100%;
+    height: calc(100% - 80px);
   }
 
-  &-enter-active {
-    opacity: 0.7;
-    transition: $transition-settings;
-  }
-
-  &-enter-done {
-    opacity: 0.7;
-  }
-
-  &-exit {
-    opacity: 0.7;
-  }
-
-  &-exit-active {
-    opacity: 0;
-    transition: $transition-settings;
-  }
-}
-
-.modal-transition {
-  &-appear {
+  &--appear {
     opacity: 0;
     -webkit-transform: $transition-out-center-transform;
     transform: $transition-out-center-transform;
@@ -106,7 +66,7 @@ $transition-out-transform: scale(0);
     }
   }
 
-  &-appear-active {
+  &--appear-active {
     opacity: 1;
     -webkit-transform: $transition-in-center-transform;
     transform: $transition-in-center-transform;
@@ -118,7 +78,7 @@ $transition-out-transform: scale(0);
     }
   }
 
-  &-appear-done {
+  &--appear-done {
     opacity: 1;
     -webkit-transform: $transition-in-center-transform;
     transform: $transition-in-center-transform;
@@ -129,7 +89,7 @@ $transition-out-transform: scale(0);
     }
   }
 
-  &-enter {
+  &--enter {
     opacity: 0;
     -webkit-transform: $transition-out-center-transform;
     transform: $transition-out-center-transform;
@@ -140,7 +100,7 @@ $transition-out-transform: scale(0);
     }
   }
 
-  &-enter-active {
+  &--enter-active {
     opacity: 1;
     -webkit-transform: $transition-in-center-transform;
     transform: $transition-in-center-transform;
@@ -152,7 +112,7 @@ $transition-out-transform: scale(0);
     }
   }
 
-  &-enter-done {
+  &--enter-done {
     opacity: 1;
     -webkit-transform: $transition-in-center-transform;
     transform: $transition-in-center-transform;
@@ -163,7 +123,7 @@ $transition-out-transform: scale(0);
     }
   }
 
-  &-exit {
+  &--exit {
     opacity: 1;
     -webkit-transform: translate(-50%, -50%) scale(1);
     transform: translate(-50%, -50%) scale(1);
@@ -174,7 +134,7 @@ $transition-out-transform: scale(0);
     }
   }
 
-  &-exit-active {
+  &--exit-active {
     opacity: 0;
     -webkit-transform: translate(-50%, -50%) scale(0);
     transform: translate(-50%, -50%) scale(0);
@@ -186,13 +146,51 @@ $transition-out-transform: scale(0);
     }
   }
 
-  &-exit-done {
+  &--exit-done {
     opacity: 0;
   }
-}
 
-.close-button {
-  cursor: pointer;
-  flex-grow: 0;
-  padding-right: 1rem;
+  &__overlay {
+    position: absolute;
+    z-index: 3;
+    width: 100%;
+    height: 100%;
+    background-color: $background-color;
+    opacity: 0.7;
+
+    &--appear {
+      opacity: 0;
+    }
+
+    &--appear-active {
+      opacity: 0.7;
+      transition: $transition-settings;
+    }
+
+    &--appear-done {
+      opacity: 0.7;
+    }
+
+    &--enter {
+      opacity: 0;
+    }
+
+    &--enter-active {
+      opacity: 0.7;
+      transition: $transition-settings;
+    }
+
+    &--enter-done {
+      opacity: 0.7;
+    }
+
+    &--exit {
+      opacity: 0.7;
+    }
+
+    &--exit-active {
+      opacity: 0;
+      transition: $transition-settings;
+    }
+  }
 }

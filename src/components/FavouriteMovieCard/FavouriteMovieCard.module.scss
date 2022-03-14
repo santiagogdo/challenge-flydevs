@@ -1,6 +1,6 @@
 @import '../../styles/colors.scss';
 
-.card {
+.favourite-movie-card {
   display: flex;
   position: relative;
   background-color: $background-color;
@@ -11,108 +11,108 @@
   color: $primary-text-color;
   font-family: 'Gilroy Light';
 
+  &:hover {
+    .favourite-movie-card__overlay {
+      background-color: rgba(24, 24, 37, 0.7);
+    }
+  }
+
   @media (max-width: 480px) {
     & {
       max-height: 380px;
     }
   }
-}
 
-.poster {
-  width: 50%;
-  height: 50%;
-  position: relative;
-}
+  &__poster {
+    width: 50%;
+    height: 50%;
+    position: relative;
+  }
 
-.poster-image {
-  border: 0px;
-  border-top-left-radius: 10px;
-}
+  &__button-container {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    z-index: 2;
+  }
 
-.overlay-wrapper {
-  width: 100%;
-  height: 84%;
-  position: absolute;
-}
+  &__overlay-container {
+    width: 100%;
+    height: 84%;
+    position: absolute;
+  }
 
-.overlay {
-  height: 100%;
-  width: 100%;
-  top: 0;
-  position: absolute;
-  z-index: 1;
-  border-top-left-radius: 10px;
-  cursor: pointer;
-  background: linear-gradient(rgba(64, 62, 90, 0), rgba(25, 25, 38, 1));
-  transition: background-color ease 0.3s;
-}
+  &__overlay {
+    height: 100%;
+    width: 100%;
+    top: 0;
+    position: absolute;
+    z-index: 1;
+    border-top-left-radius: 10px;
+    cursor: pointer;
+    background: linear-gradient(rgba(64, 62, 90, 0), rgba(25, 25, 38, 1));
+    transition: background-color ease 0.3s;
+  }
 
-.favourite-button-container {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  z-index: 2;
-}
+  &__play-button-container {
+    position: absolute;
+    z-index: 1;
+    top: calc(50% - 35px);
+    left: calc(50% - 35px);
+  }
 
-.play-button-wrapper {
-  position: absolute;
-  z-index: 1;
-  top: calc(50% - 35px);
-  left: calc(50% - 35px);
-}
+  &__poster-image {
+    border: 0px;
+    border-top-left-radius: 10px;
+  }
 
-.star-rating-container {
-  padding: 1rem;
-}
+  &__star-rating-container {
+    padding: 1rem;
+  }
 
-.movie-genres {
-  display: block;
-  margin-bottom: 0.6rem;
-  font-family: 'Gilroy Light';
-  font-size: 1em;
-  color: $text-color-pink;
-  text-overflow: ellipsis;
-  overflow: hidden;
-  white-space: nowrap;
-}
+  &__movie-genres {
+    display: block;
+    margin-bottom: 0.6rem;
+    font-family: 'Gilroy Light';
+    font-size: 1em;
+    color: $text-color-pink;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+  }
 
-.movie-content-container {
-  width: 50%;
-  width: 50%;
-  padding: 1rem;
-}
+  &__info-container {
+    width: 50%;
+    width: 50%;
+    padding: 1rem;
+  }
 
-.movie-title {
-  display: block;
-  font-family: 'Okta Neue Bold';
-  font-size: 1.2em;
-  color: $text-color-white;
-  max-height: 106px;
-  max-width: 298px;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
+  &__movie-title {
+    display: block;
+    font-family: 'Okta Neue Bold';
+    font-size: 1.2em;
+    color: $text-color-white;
+    max-height: 106px;
+    max-width: 298px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
 
-.movie-duration {
-  display: block;
-  margin-bottom: 1rem;
-  font-family: 'Okta Neue Bold';
-  font-size: 1em;
-  color: $text-color-grey;
-}
+  &__movie-duration {
+    display: block;
+    margin-bottom: 1rem;
+    font-family: 'Okta Neue Bold';
+    font-size: 1em;
+    color: $text-color-grey;
+  }
 
-.movie-description {
-  height: calc(87% - 1rem);
-  display: block;
-  color: $text-color-white;
-  font-family: 'Okta Neue Normal';
-  overflow: auto;
-  font-size: 1.1em;
-}
-
-.card:hover {
-  .overlay {
-    background-color: rgba(24, 24, 37, 0.7);
+  &__movie-description {
+    height: calc(87% - 1rem);
+    display: block;
+    color: $text-color-white;
+    font-family: 'Okta Neue Normal';
+    overflow: auto;
+    font-size: 1.1em;
   }
 }

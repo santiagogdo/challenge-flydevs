@@ -1,7 +1,7 @@
 @use '../../styles/utilities.scss';
 @import '../../styles/colors.scss';
 
-.card {
+.filmography-overview-card {
   position: relative;
   background-color: $secondary-background-color;
   width: 250px;
@@ -10,64 +10,64 @@
   border-radius: 10px;
   color: $primary-text-color;
   font-family: 'Gilroy Light';
-}
 
-.poster {
-  position: relative;
-}
+  &:hover {
+    .filmography-overview-card__overlay {
+      background-color: rgba(24, 24, 37, 0.7);
+    }
+  }
 
-.poster-image {
-  border: 0px;
-  border-top-left-radius: 10px;
-  border-top-right-radius: 10px;
-}
+  &__poster {
+    position: relative;
+  }
 
-.overlay {
-  height: 100%;
-  width: 100%;
-  top: 0;
-  position: absolute;
-  z-index: 1;
-  border-top-left-radius: 10px;
-  border-top-right-radius: 10px;
-  cursor: pointer;
-  background: linear-gradient(rgba(64, 62, 90, 0), rgba(25, 25, 38, 1));
-  transition: background-color ease 0.3s;
-}
+  &__poster-image {
+    border: 0px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+  }
 
-.play-button-wrapper {
-  position: absolute;
-  z-index: 1;
-  @include utilities.center-absolute;
-}
+  &__overlay {
+    height: 100%;
+    width: 100%;
+    top: 0;
+    position: absolute;
+    z-index: 1;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    cursor: pointer;
+    background: linear-gradient(rgba(64, 62, 90, 0), rgba(25, 25, 38, 1));
+    transition: background-color ease 0.3s;
+  }
 
-.movie-title {
-  display: block;
-  padding-left: 1rem;
-  padding-right: 1rem;
-  padding-top: 1rem;
-  font-family: 'Okta Neue Bold';
-  font-size: 1.2em;
-  color: $text-color-white;
-  max-height: 106px;
-  max-width: 298px;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
+  &__play-button-wrapper {
+    position: absolute;
+    z-index: 1;
+    @include utilities.center-absolute;
+  }
 
-.movie-release-date {
-  display: block;
-  padding-left: 1rem;
-  padding-top: 0.1rem;
-  padding-bottom: 1rem;
-  font-family: 'Okta Neue Bold';
-  font-size: 1em;
-  color: $text-color-grey;
-}
+  &__movie-title {
+    display: block;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    padding-top: 1rem;
+    font-family: 'Okta Neue Bold';
+    font-size: 1.2em;
+    color: $text-color-white;
+    max-height: 106px;
+    max-width: 298px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
 
-.card:hover {
-  .overlay {
-    background-color: rgba(24, 24, 37, 0.7);
+  &__movie-release-date {
+    display: block;
+    padding-left: 1rem;
+    padding-top: 0.1rem;
+    padding-bottom: 1rem;
+    font-family: 'Okta Neue Bold';
+    font-size: 1em;
+    color: $text-color-grey;
   }
 }

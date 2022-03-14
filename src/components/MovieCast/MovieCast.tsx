@@ -21,13 +21,13 @@ const MovieCast = (props: MovieCastProps) => {
     return cast.slice(0, 4);
   }
 
-  return <div className={styles['movie-cast-container']}>
-    <div className={styles['movie-cast-title-container']}>
-      <span className={styles['movie-cast-title']}>Cast</span>
-      <a className={styles['movie-cast-see-more']} onClick={() => setSeeMore(!seeMore)}>{seeMore ? 'See less' : 'See more'}</a>
+  return <div className={styles['movie-cast']}>
+    <div className={styles['movie-cast__title-container']}>
+      <span className={styles['movie-cast__title']}>Cast</span>
+      <a className={styles['movie-cast__see-more']} onClick={() => setSeeMore(!seeMore)}>{seeMore ? 'See less' : 'See more'}</a>
     </div>
     {
-      <TransitionGroup appear exit className={styles['movie-person-overview-container']}>
+      <TransitionGroup appear exit className={styles['movie-cast__person-overview-container']}>
         {filteredCast(props.cast).map((person) => {
           const itemRef = createRef();
           return <CSSTransition
@@ -36,10 +36,9 @@ const MovieCast = (props: MovieCastProps) => {
             timeout={300}
             unmountOnExit
             classNames={{
-              appearActive: styles['item-appear-active'],
-              enterActive: styles['item-enter-active'],
-              exitActive: styles['item-exit-active'],
-              exitDone: styles['item-exit-done']
+              appearActive: styles['movie-cast--appear-active'],
+              enterActive: styles['movie-cast--enter-active'],
+              exitActive: styles['movie-cast--exit-active'],
             }}
           >
             <div ref={itemRef as any}>

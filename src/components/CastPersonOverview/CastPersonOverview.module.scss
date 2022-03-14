@@ -1,20 +1,20 @@
 @import '../../styles/colors.scss';
 
-.cast-person-overview-container {
+.cast-person-overview {
   width: 100px;
-}
 
-.person-image-container {
-  cursor: pointer;
-}
+  &__image-container {
+    cursor: pointer;
+  }
 
-.person-image {
-  border-radius: 5px;
-}
+  &__image {
+    border-radius: 5px;
+  }
 
-.person-name {
-  display: block;
-  color: $text-color-white;
-  font-size: 1em;
-  font-family: 'Okta Neue Bold';
+  &__name {
+    display: block;
+    color: $text-color-white;
+    font-size: 1em;
+    font-family: 'Okta Neue Bold';
+  }
 }
